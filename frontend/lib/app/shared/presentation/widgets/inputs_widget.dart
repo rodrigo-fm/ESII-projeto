@@ -13,11 +13,14 @@ class InputEmail extends StatelessWidget {
   }) : super(key: key);
 
   String? validarEmail(String? valor) {
-    if (valor == null) {
+    if (valor!.isEmpty) {
       return 'Insira um valor neste campo';
+    } else if (!RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(valor)) {
+      return 'Por favor, insira um email válido';
     }
-    // TODO: adicionar expressão regular para checar se é um email
-    // if email inválido retorne erro
+    return null;
   }
 
   @override
@@ -46,9 +49,10 @@ class InputPassword extends StatelessWidget {
   }) : super(key: key);
 
   String? validarPassword(String? valor) {
-    if (valor == null) {
+    if (valor!.isEmpty) {
       return 'Insira um valor neste campo';
     }
+    return null;
   }
 
   @override

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'modules/autenticacao/presentation/views/login/login_view.dart';
-import 'shared/presentation/routes/routes.dart';
+import 'modules/usuario/presentation/views/home_view.dart';
+import 'shared/presentation/routes/global_routes.dart';
+import 'shared/presentation/routes/usuario_routes.dart';
+import 'shared/presentation/views/splash_screen/splash_screen_view.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -64,9 +67,11 @@ class AppWidget extends StatelessWidget {
       ),
       themeMode: ThemeMode.dark,
       routes: {
-        Routes.login: (ctx) => const LoginView(),
+        GlobalRoutes.login: (ctx) => const LoginView(),
+        GlobalRoutes.loading: (ctx) => const SplashScreenView(),
+        UsuarioRoutes.home: (ctx) => const HomeView(),
       },
-      initialRoute: Routes.login,
+      initialRoute: GlobalRoutes.login,
     );
   }
 }

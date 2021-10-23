@@ -37,15 +37,13 @@ class _LoginViewState extends State<LoginView> {
                   primary: Theme.of(context).primaryColor,
                   fixedSize: const Size(double.infinity, 45.0),
                 ),
-                onPressed: () {
-                  // TODO: adicionar método de login aqui
-                },
+                onPressed: () => _viewcontroller.login(context),
               ),
               const SizedBox(height: 15),
               TextButton(
                 child: const BodyText1('Cadastre-se'),
                 onPressed: () {
-                  // TODO: adicionar método para
+                  // TODO: adicionar método para eixibr view de cadastrar
                 },
               ),
             ],
