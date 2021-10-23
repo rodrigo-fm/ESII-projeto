@@ -32,7 +32,7 @@ public class UsuarioDTO {
 		return email;
 	}
 	
-	public static List<UsuarioDTO> convert(List<Usuario> usuario) {
-		return usuario.stream().map(UsuarioDTO::new).collect(Collectors.toList()) ;
+	public static List<UsuarioDTO> convert(List<Usuario> topicos) {
+		return topicos.stream().map(UsuarioDTO::new).collect(Collectors.toList()) ;
 	}
 }
