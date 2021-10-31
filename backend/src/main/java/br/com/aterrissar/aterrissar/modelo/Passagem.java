@@ -13,10 +13,11 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "tb_passagem")
 public class Passagem {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
-	private Integer numeroAcento; 
+	private Integer numeroAcento;
 	@NotBlank
 	private Float preco;
 	@NotBlank
@@ -26,57 +27,73 @@ public class Passagem {
 	@NotBlank
 	private String destino;
 	@NotBlank
-	private LocalDateTime horarioPartida;
+	private LocalDateTime horarioPartida = LocalDateTime.now();
 	@NotBlank
 	private Integer duracaoVoo;
-	
-	public Passagem () {}
-	
+
+	public Passagem() {
+	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public Integer getNumeroAcento() {
 		return numeroAcento;
 	}
+
 	public void setNumeroAcento(Integer numeroAcento) {
 		this.numeroAcento = numeroAcento;
 	}
+
 	public Float getPreco() {
 		return preco;
 	}
+
 	public void setPreco(Float preco) {
 		this.preco = preco;
 	}
+
 	public String getClasse() {
 		return classe;
 	}
+
 	public void setClasse(String classe) {
 		this.classe = classe;
 	}
+
 	public String getOrigem() {
 		return origem;
 	}
+
 	public void setOrigem(String origem) {
 		this.origem = origem;
 	}
+
 	public String getDestino() {
 		return destino;
 	}
+
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
+
 	public LocalDateTime getHorarioPartida() {
 		return horarioPartida;
 	}
+
 	public void setHorarioPartida(LocalDateTime horarioPartida) {
 		this.horarioPartida = horarioPartida;
 	}
+
 	public Integer getDuracaoVoo() {
 		return duracaoVoo;
 	}
+
 	public void setDuracaoVoo(Integer duracaoVoo) {
 		this.duracaoVoo = duracaoVoo;
 	}
@@ -148,5 +165,4 @@ public class Passagem {
 		return true;
 	}
 
-	
 }

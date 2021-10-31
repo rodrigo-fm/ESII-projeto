@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.aterrissar.aterrissar.modelo.Passagem;
-import br.com.aterrissar.aterrissar.modelo.Usuario;
+import br.com.aterrissar.aterrissar.modelo.Conta;
 
 public class PassagemDTO {
 	

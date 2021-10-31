@@ -3,19 +3,17 @@ package br.com.aterrissar.aterrissar.controller.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.aterrissar.aterrissar.modelo.Usuario;
+import br.com.aterrissar.aterrissar.modelo.Conta;
 
-public class UsuarioDTO {
+public class ContaDTO {
 	
 	private Long id;
 	private String nomeCompleto;
-	private String cpf;
 	private String email;
 	
-	public UsuarioDTO(Usuario usuario) {
+	public ContaDTO(Conta usuario) {
 		this.id = usuario.getId();
 		this.nomeCompleto = usuario.getNomeCompleto();
-		this.cpf = usuario.getCpf();
 		this.email = usuario.getEmail();
 	}
 	
@@ -25,14 +23,11 @@ public class UsuarioDTO {
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
-	public String getCpf() {
-		return cpf;
-	}
 	public String getEmail() {
 		return email;
 	}
 	
-	public static List<UsuarioDTO> convert(List<Usuario> topicos) {
-		return topicos.stream().map(UsuarioDTO::new).collect(Collectors.toList()) ;
+	public static List<ContaDTO> convert(List<Conta> topicos) {
+		return topicos.stream().map(ContaDTO::new).collect(Collectors.toList()) ;
 	}
 }
