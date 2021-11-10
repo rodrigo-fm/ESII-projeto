@@ -2,8 +2,8 @@ package br.com.aterrissar.aterrissar.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.aterrissar.aterrissar.modelo.Conta;
+import br.com.aterrissar.aterrissar.modelo.Usuario;
 
-public interface ContaRepository extends JpaRepository<Conta, Long>{
+public interface ContaRepository extends JpaRepository<Usuario, Long>{
 
 }

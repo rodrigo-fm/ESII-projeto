@@ -6,20 +6,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "tb_reembolso")
+@Table(name = "Reembolso")
 public class Reembolso {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotBlank
+
 	private Boolean aprovado;
 	@NotBlank
 	private LocalDateTime dataAbertura = LocalDateTime.now();
+	@NotBlank
+	private String motivoSolicitacao;
+
+	private String motivoRecusa;
+	
+	@OneToOne
+	@JoinColumn(name = "id_compra") 
+	Compra compra = new Compra();
 
 	public Long getId() {
 		return id;
@@ -43,6 +53,22 @@ public class Reembolso {
 
 	public void setDataAbertura(LocalDateTime dataAbertura) {
 		this.dataAbertura = dataAbertura;
+	}
+
+	public String getMotivoSolicitacao() {
+		return motivoSolicitacao;
+	}
+
+	public void setMotivoSolicitacao(String motivoSolicitacao) {
+		this.motivoSolicitacao = motivoSolicitacao;
+	}
+
+	public String getMotivoRecusa() {
+		return motivoRecusa;
+	}
+
+	public void setMotivoRecusa(String motivoRecusa) {
+		this.motivoRecusa = motivoRecusa;
 	}
 
 	@Override

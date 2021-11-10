@@ -6,18 +6,33 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "tb_compra")
+@Table(name = "Compra")
 public class Compra {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotBlank
 	private LocalDateTime dataCompra = LocalDateTime.now();
+	@NotBlank
 	private Integer quantidadeComprada;
 
+	@ManyToOne
+	@JoinColumn(name = "id_usuario") 
+	Usuario usuario = new Usuario();
+	
+	@OneToOne
+	@JoinColumn(name = "id_Passagem_aerea")
+	PassagemAerea passagemAerea = new PassagemAerea(); //possivel merda
+			
+	
 	public Compra() {
 	}
 

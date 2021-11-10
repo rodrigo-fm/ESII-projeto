@@ -1,34 +1,34 @@
 package br.com.aterrissar.aterrissar.modelo;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "Voo")
-public class Voo {
-
+@Table(name = "Passaporte")
+public class Passaporte {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
-	private String origem;
+	private String numero;
 	@NotBlank
-	private String destino;
-	@NotBlank
-	private LocalDateTime dataPartida;
-	@NotBlank
-	private Integer duracao;
+	private LocalDate dataEmissao;
 	
-
-	public Voo() {
-	}
+	@ManyToOne
+	@JoinColumn(name = "id_dados_pessoais") 
+	DadosPessoais dadosPessoais = new DadosPessoais();
+	
+	public Passaporte() {}
 
 	public Long getId() {
 		return id;
@@ -38,36 +38,20 @@ public class Voo {
 		this.id = id;
 	}
 
-	public String getOreigem() {
-		return origem;
+	public String getNumero() {
+		return numero;
 	}
 
-	public void setOrigem(String origem) {
-		this.origem = origem;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
-	public String getDestino() {
-		return destino;
+	public LocalDate getDataEmissao() {
+		return dataEmissao;
 	}
 
-	public void setDestino(String destino) {
-		this.destino = destino;
-	}
-
-	public LocalDateTime getDataPartida() {
-		return dataPartida;
-	}
-
-	public void setDataPartida(LocalDateTime dataPartida) {
-		this.dataPartida = dataPartida;
-	}
-
-	public Integer getDuracao() {
-		return duracao;
-	}
-
-	public void setDuracao(Integer duracao) {
-		this.duracao = duracao;
+	public void setDataEmissao(LocalDate dataEmissao) {
+		this.dataEmissao = dataEmissao;
 	}
 
 	@Override
@@ -86,7 +70,7 @@ public class Voo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Voo other = (Voo) obj;
+		Passaporte other = (Passaporte) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -94,5 +78,5 @@ public class Voo {
 			return false;
 		return true;
 	}
-
+	
 }

@@ -1,54 +1,62 @@
 package br.com.aterrissar.aterrissar.modelo;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "tb_conta")
-public class Conta {
+@Table(name = "CartaoDeCredito")
+public class CartaoDeCredito {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
-	private String nomeCompleto;
+	private String numeroCartao;
 	@NotBlank
-	private String email;
+	private String nomeTitular;
 	@NotBlank
-	private String senha;
-	//criar um enum para atribuir o tipo do usuario
+	private LocalDate validade;
+	@NotBlank
+	private String bandeira;
+
+	@ManyToOne
+	@JoinColumn(name = "id_usuario") 
+	Usuario usuario = new Usuario();
 	
-	
-	public Conta () {}
-	
+	public CartaoDeCredito() {
+
+	}
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public String getNomeCompleto() {
-		return nomeCompleto;
+
+	public String getNumeroCartao() {
+		return numeroCartao;
 	}
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
+
+	public void setNumeroCartao(String numeroCartao) {
+		this.numeroCartao = numeroCartao;
 	}
-	public String getEmail() {
-		return email;
+
+	public String getBandeira() {
+		return bandeira;
 	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+
+	public void setBandeira(String bandeira) {
+		this.bandeira = bandeira;
 	}
 
 	@Override
@@ -67,7 +75,7 @@ public class Conta {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Conta other = (Conta) obj;
+		CartaoDeCredito other = (CartaoDeCredito) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -76,5 +84,4 @@ public class Conta {
 		return true;
 	}
 
-	
 }

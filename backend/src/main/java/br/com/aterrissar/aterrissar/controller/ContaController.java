@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.aterrissar.aterrissar.controller.dto.ContaDTO;
-import br.com.aterrissar.aterrissar.modelo.Conta;
+import br.com.aterrissar.aterrissar.modelo.Usuario;
 import br.com.aterrissar.aterrissar.repository.ContaRepository;
 
 @Controller
@@ -21,7 +21,7 @@ public class ContaController {
 	
 	@RequestMapping("Contas")
 	public List<ContaDTO> todosOsUsuarios(){
-		List<Conta> contas = contaRepository.findAll();
+		List<Usuario> contas = contaRepository.findAll();
 		return ContaDTO.convert(contas);
 	}
 

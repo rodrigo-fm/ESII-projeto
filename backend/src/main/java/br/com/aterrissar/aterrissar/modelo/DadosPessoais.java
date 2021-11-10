@@ -4,11 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "tb_dadosPessoais")
+@Table(name = "DadosPessoais")
 public class DadosPessoais {
 
 	@Id
@@ -18,8 +20,10 @@ public class DadosPessoais {
 	private String cpf;
 	@NotBlank
 	private String rg;
-	@NotBlank
-	private String Passaporte;
+	
+	@OneToOne
+	@JoinColumn(name = "id_usuario") 
+	Usuario usuario = new Usuario();
 
 	public DadosPessoais() {
 
@@ -47,14 +51,6 @@ public class DadosPessoais {
 
 	public void setRg(String rg) {
 		this.rg = rg;
-	}
-
-	public String getPassaporte() {
-		return Passaporte;
-	}
-
-	public void setPassaporte(String passaporte) {
-		Passaporte = passaporte;
 	}
 
 	@Override

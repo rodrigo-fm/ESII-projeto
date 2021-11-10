@@ -8,43 +8,46 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "tb_dadosPagamento")
-public class DadosPagamento {
+@Table(name = "Usuario")
+public class Usuario {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
-	private String numeroCartao;
+	private String nomeCompleto;
 	@NotBlank
-	private String cvv;
-
-	public DadosPagamento() {
-
-	}
-
+	private String email;
+	@NotBlank
+	private String senha;
+	
+	
+	public Usuario () {}
+	
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getNumeroCartao() {
-		return numeroCartao;
+	
+	public String getNomeCompleto() {
+		return nomeCompleto;
 	}
-
-	public void setNumeroCartao(String numeroCartao) {
-		this.numeroCartao = numeroCartao;
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
 	}
-
-	public String getCvv() {
-		return cvv;
+	public String getEmail() {
+		return email;
 	}
-
-	public void setCvv(String cvv) {
-		this.cvv = cvv;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override
@@ -63,7 +66,7 @@ public class DadosPagamento {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DadosPagamento other = (DadosPagamento) obj;
+		Usuario other = (Usuario) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -72,4 +75,5 @@ public class DadosPagamento {
 		return true;
 	}
 
+	
 }

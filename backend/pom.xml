@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>br.com.aterrissar</groupId>
 	<artifactId>aterrissar </artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<name>aterrissar</name>
 	<description>projeto engenharia 2</description>
 	<properties>

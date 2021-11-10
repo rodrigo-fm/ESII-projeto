@@ -4,11 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "tb_passagemAerea")
 public class PassagemAerea {
 
 	@Id
@@ -18,6 +18,11 @@ public class PassagemAerea {
 	private String classe;
 	@NotBlank
 	private Double preco;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_voo") 
+	Voo voo = new Voo(); 
+	
 
 	public PassagemAerea() {
 	}
@@ -71,4 +76,5 @@ public class PassagemAerea {
 		return true;
 	}
 
+	
 }
