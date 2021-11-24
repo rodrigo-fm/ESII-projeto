@@ -1,1 +1,0 @@
-aqui são os widgets que aparecem apenas na view de login
