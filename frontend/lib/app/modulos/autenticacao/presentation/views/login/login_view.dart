@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/app/shared/presentation/widgets/textos_widget.dart';
+import 'package:frontend2/app/compartilhado/presentation/widgets/textos_widget.dart';
 
-import '../../../../../shared/presentation/widgets/inputs_widget.dart';
+import '../../../../../compartilhado/presentation/widgets/inputs_widget.dart';
 
 import 'login_viewcontroller.dart';
 

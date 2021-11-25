@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:frontend2/app/modulos/autenticacao/data/datasources/implementacoes/autenticacao_heroku_remote_datasource.dart';
+import 'package:frontend2/app/modulos/autenticacao/domain/controllers/implementacoes/autenticacao_controller.dart';
 
-import '../../../../../shared/presentation/routes/usuario_routes.dart';
-import '../../../../../shared/presentation/widgets/dialogs/loading_dialog_widget.dart';
+import '../../../domain/controllers/autenticacao_controller_interface.dart';
+import '../../../../../compartilhado/presentation/routes/usuario_routes.dart';
+import '../../../../../compartilhado/presentation/widgets/dialogs/loading_dialog_widget.dart';
 import '../../../domain/validators/login_validator.dart';
 import 'login_states.dart';
 
@@ -12,7 +15,7 @@ class LoginViewController {
     'password': TextEditingController(),
   };
 
-  Stream<LoginState> loginStates() async* {
+  Stream<LoginState> loginStates(IAutenticacaoController controller) async* {
     final validator = LoginValidator();
 
     if (!validator(formKey)) {
@@ -21,17 +24,21 @@ class LoginViewController {
 
     yield LoadingLoginState();
 
-    await Future.delayed(const Duration(seconds: 3));
+    final resultado = await controller.login(
+      inputControllers['email']!.text,
+      inputControllers['password']!.text,
+      AutenticacaoHerokuRemoteDatasource(),
+    );
 
-    // caso dê erro na requisição ou no caso de uso:
-    // yield FalhaLoginState('Erro ao realizar login');
-
-    yield SucessoLoginState();
+    yield resultado.fold(
+      (mensagemErro) => FalhaLoginState(mensagemErro),
+      (sucesso) => SucessoLoginState(),
+    );
   }
 
   Future<void> login(BuildContext ctx) async {
     bool loading = false;
-    loginStates().listen((value) {
+    loginStates(AutenticacaoController()).listen((value) {
       if (value is LoadingLoginState) {
         loading = true;
         showDialog(
@@ -41,13 +48,13 @@ class LoginViewController {
       } else {
         if (loading) {
           loading = false;
+          // esconde o widget de loading
           Navigator.of(ctx).pop();
         }
         if (value is FalhaLoginState) {
           // exibir mensagem de erro
           // usar o atributo "value.mensagem" na mensagem
         } else if (value is SucessoLoginState) {
-          // redirecionar para a tela principal
           Navigator.of(ctx).pushNamed(UsuarioRoutes.home);
         }
       }
