@@ -19,7 +19,7 @@ public class ContaController {
 	@Autowired
 	ContaRepository contaRepository;
 	
-	@RequestMapping("Contas")
+	@RequestMapping("contas")
 	public List<ContaDTO> todosOsUsuarios(){
 		List<Usuario> contas = contaRepository.findAll();
 		return ContaDTO.convert(contas);
