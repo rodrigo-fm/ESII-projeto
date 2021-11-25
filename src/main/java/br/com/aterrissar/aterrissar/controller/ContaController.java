@@ -11,9 +11,7 @@ import br.com.aterrissar.aterrissar.controller.dto.ContaDTO;
 import br.com.aterrissar.aterrissar.modelo.Usuario;
 import br.com.aterrissar.aterrissar.repository.ContaRepository;
 
-@Controller
 @RestController
-//@RequestMapping("usuario")
 public class ContaController {
 	
 	@Autowired
