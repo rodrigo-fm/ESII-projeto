@@ -87,10 +87,12 @@ class Headline3 extends StatelessWidget {
 class BodyText1 extends StatelessWidget {
   final String texto;
   final Color? color;
+  final TextAlign? textAlign;
   const BodyText1(
     this.texto, {
     Key? key,
     this.color,
+    this.textAlign,
   }) : super(key: key);
 
   TextStyle? _estiloEscolhido(BuildContext ctx) {
@@ -108,6 +110,7 @@ class BodyText1 extends StatelessWidget {
     return Text(
       texto,
       style: _estiloEscolhido(context),
+      textAlign: textAlign ?? TextAlign.left,
     );
   }
 }

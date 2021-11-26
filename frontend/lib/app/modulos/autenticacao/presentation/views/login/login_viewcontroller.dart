@@ -61,7 +61,8 @@ class LoginViewController {
           // exibir mensagem de erro
           // usar o atributo "value.mensagem" na mensagem
         } else if (value is SucessoLoginState) {
-          Navigator.of(ctx).pushNamed(UsuarioRoutes.home);
+          // Navigator.of(ctx).pushNamed(UsuarioRoutes.home);
+          Navigator.of(ctx).pushReplacementNamed(UsuarioRoutes.buscarPassagens);
         }
       }
     });

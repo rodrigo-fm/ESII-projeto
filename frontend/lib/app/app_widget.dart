@@ -7,6 +7,7 @@ import 'compartilhado/presentation/routes/usuario_routes.dart';
 import 'compartilhado/presentation/views/splash_screen/splash_screen_view.dart';
 import 'modulos/autenticacao/presentation/views/auto_login/auto_login_view.dart';
 import 'modulos/autenticacao/presentation/views/login/login_view.dart';
+import 'modulos/usuario/passagem_aerea/apresentacao/views/buscar_passagem/buscar_passagem_view.dart';
 import 'modulos/usuario/presentation/views/home_view.dart';
 
 class AppWidget extends StatelessWidget {
@@ -79,6 +80,7 @@ class AppWidget extends StatelessWidget {
           GlobalRoutes.autoLogin: (ctx) => AutoLoginView(),
           GlobalRoutes.login: (ctx) => const LoginView(),
           GlobalRoutes.loading: (ctx) => const SplashScreenView(),
+          UsuarioRoutes.buscarPassagens: (ctx) => BuscarPassagemView(),
           UsuarioRoutes.home: (ctx) => const HomeView(),
         },
         initialRoute: GlobalRoutes.autoLogin,

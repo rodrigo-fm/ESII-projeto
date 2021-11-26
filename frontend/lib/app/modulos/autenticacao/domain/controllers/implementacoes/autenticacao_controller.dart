@@ -15,7 +15,7 @@ class AutenticacaoController implements IAutenticacaoController {
     BuildContext ctx,
     IAutenticacaoLocalDatasource localDatasource,
   ) async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(milliseconds: 1500));
     final provider = Provider.of<AutenticacaoProvider>(ctx, listen: false);
     final usuarioString = await localDatasource.getLocalData();
     if (usuarioString != null) {
