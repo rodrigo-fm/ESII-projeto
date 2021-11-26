@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/app/modulos/autenticacao/data/datasources/implementacoes/autenticacao_heroku_remote_datasource.dart';
-import 'package:frontend2/app/modulos/autenticacao/domain/controllers/implementacoes/autenticacao_controller.dart';
 
-import '../../../domain/controllers/autenticacao_controller_interface.dart';
 import '../../../../../compartilhado/presentation/routes/usuario_routes.dart';
 import '../../../../../compartilhado/presentation/widgets/dialogs/loading_dialog_widget.dart';
+import '../../../data/datasources/implementacoes/autenticacao_heroku_remote_datasource.dart';
+import '../../../data/datasources/implementacoes/autenticacao_shared_preferences_local_datasource.dart';
+import '../../../domain/controllers/autenticacao_controller_interface.dart';
+import '../../../domain/controllers/implementacoes/autenticacao_controller.dart';
 import '../../../domain/validators/login_validator.dart';
 import 'login_states.dart';
 
@@ -15,7 +16,10 @@ class LoginViewController {
     'password': TextEditingController(),
   };
 
-  Stream<LoginState> loginStates(IAutenticacaoController controller) async* {
+  Stream<LoginState> loginStates(
+    IAutenticacaoController controller,
+    BuildContext ctx,
+  ) async* {
     final validator = LoginValidator();
 
     if (!validator(formKey)) {
@@ -28,6 +32,8 @@ class LoginViewController {
       inputControllers['email']!.text,
       inputControllers['password']!.text,
       AutenticacaoHerokuRemoteDatasource(),
+      AutenticacaoSharedPreferencesLocalDatasource(),
+      ctx,
     );
 
     yield resultado.fold(
@@ -38,7 +44,7 @@ class LoginViewController {
 
   Future<void> login(BuildContext ctx) async {
     bool loading = false;
-    loginStates(AutenticacaoController()).listen((value) {
+    loginStates(AutenticacaoController(), ctx).listen((value) {
       if (value is LoadingLoginState) {
         loading = true;
         showDialog(

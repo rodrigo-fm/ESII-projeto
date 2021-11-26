@@ -5,10 +5,12 @@ import 'token_model.dart';
 class UsuarioModel {
   final int id;
   final String email;
+  final String tipoUsuario;
   final TokenModel token;
 
   UsuarioModel({
     required this.id,
+    required this.tipoUsuario,
     required this.email,
     required this.token,
   });
@@ -16,6 +18,7 @@ class UsuarioModel {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
+      'tipoUsuario': tipoUsuario,
       'email': email,
       'token': token.toMap(),
     };
@@ -24,6 +27,7 @@ class UsuarioModel {
   factory UsuarioModel.fromMap(Map<String, dynamic> map) {
     return UsuarioModel(
       id: map['id'],
+      tipoUsuario: map['tipoUsuario'],
       email: map['email'],
       token: TokenModel.fromMap(map['token']),
     );

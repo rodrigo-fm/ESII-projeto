@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/app/compartilhado/presentation/widgets/textos_widget.dart';
 
 import '../../../../../compartilhado/presentation/widgets/inputs_widget.dart';
-
+import '../../../../../compartilhado/presentation/widgets/textos_widget.dart';
 import 'login_viewcontroller.dart';
 
 class LoginView extends StatefulWidget {
