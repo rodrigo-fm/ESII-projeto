@@ -15,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "Passaporte")
 public class Passaporte {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -23,12 +23,9 @@ public class Passaporte {
 	private String numero;
 	@NotBlank
 	private LocalDate dataEmissao;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_dados_pessoais") 
-	DadosPessoais dadosPessoais = new DadosPessoais();
-	
-	public Passaporte() {}
+
+	public Passaporte() {
+	}
 
 	public Long getId() {
 		return id;
@@ -78,5 +75,5 @@ public class Passaporte {
 			return false;
 		return true;
 	}
-	
+
 }

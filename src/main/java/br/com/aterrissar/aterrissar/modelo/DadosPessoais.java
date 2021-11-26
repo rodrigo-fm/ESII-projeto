@@ -1,18 +1,25 @@
 package br.com.aterrissar.aterrissar.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "DadosPessoais")
-public class DadosPessoais {
+public class DadosPessoais implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -21,9 +28,13 @@ public class DadosPessoais {
 	@NotBlank
 	private String rg;
 	
+//	@OneToOne
+//	@JoinColumn(name = "id_usuario") 
+//	Usuario usuario = new Usuario();
+
 	@OneToOne
-	@JoinColumn(name = "id_usuario") 
-	Usuario usuario = new Usuario();
+	@JoinColumn(name = "id_passaporte")
+	Passaporte passaporte = new Passaporte();
 
 	public DadosPessoais() {
 
@@ -59,6 +70,14 @@ public class DadosPessoais {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
+	}
+
+	public Passaporte getPassaporte() {
+		return passaporte;
+	}
+
+	public void setPassaporte(Passaporte passaporte) {
+		this.passaporte = passaporte;
 	}
 
 	@Override
