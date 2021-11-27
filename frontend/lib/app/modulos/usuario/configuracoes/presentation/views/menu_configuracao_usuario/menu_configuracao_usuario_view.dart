@@ -1,3 +1,4 @@
+import 'package:aterrissar/app/compartilhado/presentation/routes/usuario_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,21 +29,37 @@ class MenuConfiguracaoUsuarioView extends StatelessWidget {
                   thickness: 2,
                   color: Color(0xffc0c0c0),
                 ),
-                const MenuConfiguracaoListTileWidget(
-                  icone: Icon(Icons.cake),
+                MenuConfiguracaoListTileWidget(
+                  icone: const Icon(Icons.cake),
                   opcao: 'Dados da conta',
+                  onTap: () {
+                    Navigator.of(context).pushNamed(
+                      UsuarioRoutes.visualizarDadosConta,
+                    );
+                  },
                 ),
-                const MenuConfiguracaoListTileWidget(
-                  icone: Icon(Icons.cake),
+                MenuConfiguracaoListTileWidget(
+                  icone: const Icon(Icons.cake),
                   opcao: 'Histórico de compras',
+                  onTap: () {
+                    Navigator.of(context).pushNamed(
+                      UsuarioRoutes.visualizarCompras,
+                    );
+                  },
                 ),
-                const MenuConfiguracaoListTileWidget(
-                  icone: Icon(Icons.cake),
+                MenuConfiguracaoListTileWidget(
+                  icone: const Icon(Icons.cake),
                   opcao: 'Pedir suporte',
+                  onTap: () {
+                    Navigator.of(context).pushNamed(
+                      UsuarioRoutes.pedirSuporte,
+                    );
+                  },
                 ),
-                const MenuConfiguracaoListTileWidget(
-                  icone: Icon(Icons.cake),
+                MenuConfiguracaoListTileWidget(
+                  icone: const Icon(Icons.cake),
                   opcao: 'Sair',
+                  onTap: () {},
                 ),
               ],
             ),

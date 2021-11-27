@@ -1,8 +1,3 @@
-import 'package:aterrissar/app/modulos/usuario/passagem_aerea/apresentacao/views/confirmar_compra/confirmar_compra_view.dart';
-import 'package:aterrissar/app/modulos/usuario/passagem_aerea/apresentacao/views/escolher_assento/escolher_assento_view.dart';
-import 'package:aterrissar/app/modulos/usuario/passagem_aerea/apresentacao/views/inserir_dados_pagamento/inserir_dados_pagamento_view.dart';
-import 'package:aterrissar/app/modulos/usuario/passagem_aerea/apresentacao/views/inserir_dados_passaporte/inserir_dados_passaporte_view.dart';
-import 'package:aterrissar/app/modulos/usuario/passagem_aerea/apresentacao/views/inserir_dados_pessoais/inserir_dados_pessoais_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,8 +8,16 @@ import 'compartilhado/presentation/views/splash_screen/splash_screen_view.dart';
 import 'modulos/autenticacao/presentation/views/auto_login/auto_login_view.dart';
 import 'modulos/autenticacao/presentation/views/login/login_view.dart';
 import 'modulos/usuario/configuracoes/presentation/views/menu_configuracao_usuario/menu_configuracao_usuario_view.dart';
+import 'modulos/usuario/configuracoes/presentation/views/visualizar_dados_conta/visualizar_dados_conta_view.dart';
 import 'modulos/usuario/passagem_aerea/apresentacao/views/buscar_passagem/buscar_passagem_view.dart';
+import 'modulos/usuario/passagem_aerea/apresentacao/views/confirmar_compra/confirmar_compra_view.dart';
+import 'modulos/usuario/passagem_aerea/apresentacao/views/escolher_assento/escolher_assento_view.dart';
 import 'modulos/usuario/passagem_aerea/apresentacao/views/exibir_passagens_buscadas/exibir_passagens_buscadas_view.dart';
+import 'modulos/usuario/passagem_aerea/apresentacao/views/inserir_dados_pagamento/inserir_dados_pagamento_view.dart';
+import 'modulos/usuario/passagem_aerea/apresentacao/views/inserir_dados_passaporte/inserir_dados_passaporte_view.dart';
+import 'modulos/usuario/passagem_aerea/apresentacao/views/inserir_dados_pessoais/inserir_dados_pessoais_view.dart';
+import 'modulos/usuario/passagem_aerea/apresentacao/views/visualizar_compras/visualizar_compras_view.dart';
+import 'modulos/usuario/suporte/apresentacao/views/pedir_suporte/pedir_suporte_view.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -97,7 +100,12 @@ class AppWidget extends StatelessWidget {
           UsuarioRoutes.escolherAssento: (ctx) => const EscolherAssentoView(),
           UsuarioRoutes.exibirPassagensBuscadas: (ctx) =>
               const ExibirPassagensBuscadasView(),
+          UsuarioRoutes.pedirSuporte: (ctx) => const PedirSuporteView(),
           UsuarioRoutes.menu: (ctx) => const MenuConfiguracaoUsuarioView(),
+          UsuarioRoutes.visualizarCompras: (ctx) =>
+              const VisualizarComprasView(),
+          UsuarioRoutes.visualizarDadosConta: (ctx) =>
+              const VisualizarDadosContaView(),
         },
         initialRoute: GlobalRoutes.autoLogin,
       ),
