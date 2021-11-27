@@ -31,7 +31,7 @@ class PassagemAereaBuscaWidget extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               Navigator.of(context).pushNamed(
-                UsuarioRoutes.inserirDadospagamento,
+                UsuarioRoutes.inserirDadosPagamento,
               );
             },
             style: ElevatedButton.styleFrom(

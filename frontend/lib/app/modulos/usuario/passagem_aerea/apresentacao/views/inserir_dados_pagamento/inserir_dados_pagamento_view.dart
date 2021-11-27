@@ -1,7 +1,8 @@
-import 'package:aterrissar/app/compartilhado/presentation/routes/usuario_routes.dart';
-import 'package:aterrissar/app/compartilhado/presentation/widgets/inputs_widget.dart';
-import 'package:aterrissar/app/compartilhado/presentation/widgets/textos_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../compartilhado/presentation/routes/usuario_routes.dart';
+import '../../../../../../compartilhado/presentation/widgets/inputs_widget.dart';
+import '../../../../../../compartilhado/presentation/widgets/textos_widget.dart';
 
 class InserirDadosPagamentoView extends StatelessWidget with ChangeNotifier {
   InserirDadosPagamentoView({Key? key}) : super(key: key);
