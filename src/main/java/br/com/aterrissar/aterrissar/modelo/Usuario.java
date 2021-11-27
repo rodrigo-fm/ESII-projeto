@@ -2,10 +2,12 @@ package br.com.aterrissar.aterrissar.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -23,11 +25,13 @@ public class Usuario implements Serializable {
 	@NotBlank
 	private String nomeCompleto;
 	@NotBlank
+	@Column(unique = true)
 	private String email;
 	@NotBlank
 	private String senha;
 	
 	@OneToOne
+	@JoinColumn(name = "id_dados_pessoais")
 	DadosPessoais dadosPessoais = new DadosPessoais();	
 	
 	public Usuario () {}
