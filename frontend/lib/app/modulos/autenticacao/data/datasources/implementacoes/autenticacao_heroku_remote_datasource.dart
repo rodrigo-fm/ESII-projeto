@@ -22,6 +22,7 @@ class AutenticacaoHerokuRemoteDatasource
 
     return UsuarioModel(
       id: 1,
+      nome: 'Adelisson',
       tipoUsuario: 'usuario',
       email: 'email@email.com',
       token: TokenModel(
@@ -44,7 +45,5 @@ class AutenticacaoHerokuRemoteDatasource
     // }
 
     // // retornar mensagem de erro
-
-    throw UnimplementedError();
   }
 }

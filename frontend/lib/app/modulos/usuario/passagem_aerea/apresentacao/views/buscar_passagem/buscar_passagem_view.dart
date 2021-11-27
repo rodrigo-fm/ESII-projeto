@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../../compartilhado/presentation/routes/usuario_routes.dart';
 import '../../../../../../compartilhado/presentation/widgets/textos_widget.dart';
 import 'widgets/escolher_data_widget.dart';
 import 'widgets/ida_e_volta_widget.dart';
@@ -23,7 +24,9 @@ class BuscarPassagemView extends StatelessWidget {
             Icons.person,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(UsuarioRoutes.menu);
+          },
         ),
       ),
       body: Form(
@@ -74,6 +77,17 @@ class BuscarPassagemView extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(
+                        UsuarioRoutes.exibirPassagensBuscadas,
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Theme.of(context).primaryColor,
+                    ),
+                    child: const BodyText1('Buscar passagens'),
                   ),
                 ],
               ),

@@ -7,8 +7,10 @@ import 'compartilhado/presentation/routes/usuario_routes.dart';
 import 'compartilhado/presentation/views/splash_screen/splash_screen_view.dart';
 import 'modulos/autenticacao/presentation/views/auto_login/auto_login_view.dart';
 import 'modulos/autenticacao/presentation/views/login/login_view.dart';
+import 'modulos/usuario/configuracoes/presentation/views/menu_configuracao_usuario/menu_configuracao_usuario_view.dart';
 import 'modulos/usuario/passagem_aerea/apresentacao/views/buscar_passagem/buscar_passagem_view.dart';
-import 'modulos/usuario/presentation/views/home_view.dart';
+import 'modulos/usuario/passagem_aerea/apresentacao/views/comprar_passagem_aerea/comprar_passagem_aerea_view.dart';
+import 'modulos/usuario/passagem_aerea/apresentacao/views/exibir_passagens_buscadas/exibir_passagens_buscadas_view.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -81,7 +83,11 @@ class AppWidget extends StatelessWidget {
           GlobalRoutes.login: (ctx) => const LoginView(),
           GlobalRoutes.loading: (ctx) => const SplashScreenView(),
           UsuarioRoutes.buscarPassagens: (ctx) => BuscarPassagemView(),
-          UsuarioRoutes.home: (ctx) => const HomeView(),
+          UsuarioRoutes.comprarPassagem: (ctx) =>
+              const ComprarPassagemAereaView(),
+          UsuarioRoutes.menu: (ctx) => const MenuConfiguracaoUsuarioView(),
+          UsuarioRoutes.exibirPassagensBuscadas: (ctx) =>
+              const ExibirPassagensBuscadasView(),
         },
         initialRoute: GlobalRoutes.autoLogin,
       ),
