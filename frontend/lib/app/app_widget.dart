@@ -1,3 +1,5 @@
+import 'package:aterrissar/app/modulos/usuario/passagem_aerea/apresentacao/views/inserir_dados_pagamento/inserir_dados_pagamento_view.dart';
+import 'package:aterrissar/app/modulos/usuario/passagem_aerea/apresentacao/views/inserir_dados_pessoais/inserir_dados_pessoais_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +11,6 @@ import 'modulos/autenticacao/presentation/views/auto_login/auto_login_view.dart'
 import 'modulos/autenticacao/presentation/views/login/login_view.dart';
 import 'modulos/usuario/configuracoes/presentation/views/menu_configuracao_usuario/menu_configuracao_usuario_view.dart';
 import 'modulos/usuario/passagem_aerea/apresentacao/views/buscar_passagem/buscar_passagem_view.dart';
-import 'modulos/usuario/passagem_aerea/apresentacao/views/comprar_passagem_aerea/comprar_passagem_aerea_view.dart';
 import 'modulos/usuario/passagem_aerea/apresentacao/views/exibir_passagens_buscadas/exibir_passagens_buscadas_view.dart';
 
 class AppWidget extends StatelessWidget {
@@ -83,11 +84,13 @@ class AppWidget extends StatelessWidget {
           GlobalRoutes.login: (ctx) => const LoginView(),
           GlobalRoutes.loading: (ctx) => const SplashScreenView(),
           UsuarioRoutes.buscarPassagens: (ctx) => BuscarPassagemView(),
-          UsuarioRoutes.comprarPassagem: (ctx) =>
-              const ComprarPassagemAereaView(),
-          UsuarioRoutes.menu: (ctx) => const MenuConfiguracaoUsuarioView(),
+          UsuarioRoutes.inserirDadospagamento: (ctx) =>
+              InserirDadosPagamentoView(),
+          UsuarioRoutes.inserirDadosPessoais: (ctx) =>
+              InserirDadosPessoaisView(),
           UsuarioRoutes.exibirPassagensBuscadas: (ctx) =>
               const ExibirPassagensBuscadasView(),
+          UsuarioRoutes.menu: (ctx) => const MenuConfiguracaoUsuarioView(),
         },
         initialRoute: GlobalRoutes.autoLogin,
       ),

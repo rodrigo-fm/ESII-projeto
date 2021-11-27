@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../routes/usuario_routes.dart';
 import '../textos_widget.dart';
 
 class PassagemAereaBuscaWidget extends StatelessWidget {
@@ -28,7 +29,11 @@ class PassagemAereaBuscaWidget extends StatelessWidget {
           const Divider(thickness: 2),
           Headline3('Valor: $valor'),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(
+                UsuarioRoutes.inserirDadospagamento,
+              );
+            },
             style: ElevatedButton.styleFrom(
               primary: Theme.of(context).primaryColor,
             ),
