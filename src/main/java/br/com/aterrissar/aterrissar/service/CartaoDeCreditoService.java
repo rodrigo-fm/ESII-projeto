@@ -1,5 +1,7 @@
 package br.com.aterrissar.aterrissar.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
@@ -8,12 +10,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import br.com.aterrissar.aterrissar.controller.dto.CartaoDeCreditoDTO;
-import br.com.aterrissar.aterrissar.controller.dto.DadosPessoaisDTO;
 import br.com.aterrissar.aterrissar.modelo.CartaoDeCredito;
-import br.com.aterrissar.aterrissar.modelo.DadosPessoais;
 import br.com.aterrissar.aterrissar.repository.CartaoDeCreditoRepository;
 import br.com.aterrissar.aterrissar.service.exceptions.DatabaseException;
 import br.com.aterrissar.aterrissar.service.exceptions.ResourceNotFoundException;
@@ -33,7 +35,7 @@ public class CartaoDeCreditoService {
 		cartao.setNumeroCartao(cartaoDTO.getNumeroCartao());
 		cartao.setBandeira(cartaoDTO.getBandeira());
 		cartao.setValidade(cartaoDTO.getValidade());
-		cartao.setUsuario(null);
+		cartao.setUsuario(cartaoDTO.getUsuario());
 		repository.save(cartao);
 		return new CartaoDeCreditoDTO(cartao);
 	}
@@ -43,6 +45,33 @@ public class CartaoDeCreditoService {
 		Optional<CartaoDeCredito> obj = repository.findById(id);
 		CartaoDeCredito cartao = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		return new CartaoDeCreditoDTO(cartao);
+	}
+	
+//	@GetMapping
+//	public List<TopicoDto> lista(String nomeCurso) {
+//		if (nomeCurso == null) {
+//			List<Topico> topicos = topicoRepository.findAll();
+//			return TopicoDto.converter(topicos);
+//		} else {
+//			List<Topico> topicos = topicoRepository.findByCursoNome(nomeCurso);
+//			return TopicoDto.converter(topicos);
+//		}
+//	}
+//	@GetMapping(path = "all")
+//	public ResponseEntity<List<CartaoDeCredito>> getAllCartoes() {
+//		return ResponseEntity.ok().body(cartaoDeCreditoRepository.findAll());
+//	}
+	
+	@Transactional
+	public List<CartaoDeCreditoDTO> listaTodosOsCartoesDoUsuario(Long id) {
+		List<CartaoDeCredito> cartao = repository.findAll();
+		List<CartaoDeCredito> cartaoRetorno = new ArrayList<CartaoDeCredito>();
+		for(CartaoDeCredito cartaoDeCredito : cartao) {
+ 			if(cartaoDeCredito.getUsuario().getId() == id) {
+				cartaoRetorno.add(cartaoDeCredito);
+			}
+		}
+		return CartaoDeCreditoDTO.converter(cartaoRetorno);
 	}
 
 	public void deletarCartaoDeCredito(Long id) {
@@ -69,5 +98,5 @@ public class CartaoDeCreditoService {
 			throw new ResourceNotFoundException("Id not found " + id);
 		}
 	}
-
+	
 }

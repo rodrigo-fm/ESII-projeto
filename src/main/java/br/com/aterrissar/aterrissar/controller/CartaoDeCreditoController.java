@@ -31,6 +31,12 @@ public class CartaoDeCreditoController {
 		return ResponseEntity.ok().body(cartaoDTO);
 	}
 	
+	@GetMapping(value = "/usuario/{id}")
+	public ResponseEntity<CartaoDeCreditoDTO> buscaListaDeCartaoPorId(@PathVariable Long id){
+		CartaoDeCreditoDTO cartaoDTO = (CartaoDeCreditoDTO) service.listaTodosOsCartoesDoUsuario(id);
+		return ResponseEntity.ok().body(cartaoDTO);
+	}
+	
 	@PostMapping
 	public ResponseEntity<CartaoDeCreditoDTO> inserirNovoCartaoDeCredito(@RequestBody CartaoDeCreditoDTO cartaoDTO){
 		cartaoDTO = service.insereNovosCartaoDeCredito(cartaoDTO);

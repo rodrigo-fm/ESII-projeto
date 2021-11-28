@@ -1,10 +1,12 @@
 package br.com.aterrissar.aterrissar.controller.dto;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import br.com.aterrissar.aterrissar.modelo.CartaoDeCredito;
+import br.com.aterrissar.aterrissar.modelo.Usuario;
 
 public class CartaoDeCreditoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -15,6 +17,8 @@ public class CartaoDeCreditoDTO implements Serializable {
 	private String validade;
 	private String bandeira;
 
+	private Usuario usuario = new Usuario();
+	
 	public CartaoDeCreditoDTO() {}
 	
 	public CartaoDeCreditoDTO(CartaoDeCredito cartao) {
@@ -24,6 +28,7 @@ public class CartaoDeCreditoDTO implements Serializable {
 		this.nomeTitular = cartao.getNomeTitular();
 		this.validade = cartao.getValidade();
 		this.bandeira = cartao.getBandeira();
+		this.usuario.setId(cartao.getUsuario().getId());
 	}
 
 	public Long getId() {
@@ -66,6 +71,14 @@ public class CartaoDeCreditoDTO implements Serializable {
 		this.bandeira = bandeira;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -81,6 +94,10 @@ public class CartaoDeCreditoDTO implements Serializable {
 			return false;
 		CartaoDeCreditoDTO other = (CartaoDeCreditoDTO) obj;
 		return Objects.equals(id, other.id);
+	}
+	
+	public static List<CartaoDeCreditoDTO> converter(List<CartaoDeCredito> cartaoRetorno) {
+		return cartaoRetorno.stream().map(CartaoDeCreditoDTO::new).collect(Collectors.toList());
 	}
 
 }
