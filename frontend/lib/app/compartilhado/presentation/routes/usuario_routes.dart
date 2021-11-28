@@ -9,6 +9,7 @@ class UsuarioRoutes {
   static const inserirDadosPessoais = '/compra/dados-pessoais';
   static const pedirSuporte = '/usuario/pedir-suporte';
   static const menu = '/menu/usuario';
+  static const solicitarReembolso = '/menu/reembolso';
   static const visualizarCompras = '/usuario/compras/visualizar';
   static const visualizarDadosConta = '/usuario/dados/visualizar';
 }

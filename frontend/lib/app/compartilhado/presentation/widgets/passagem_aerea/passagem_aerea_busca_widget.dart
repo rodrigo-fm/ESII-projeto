@@ -8,8 +8,13 @@ import '../textos_widget.dart';
 
 class PassagemAereaBuscaWidget extends StatelessWidget {
   final PassagemAereaModel passagem;
+  final Function() onPressed;
+  final String textoBotao;
+
   const PassagemAereaBuscaWidget(
     this.passagem, {
+    required this.onPressed,
+    required this.textoBotao,
     Key? key,
   }) : super(key: key);
 
@@ -60,15 +65,16 @@ class PassagemAereaBuscaWidget extends StatelessWidget {
             child: Headline3('Valor: ${formatarPreco(passagem.preco)}'),
           ),
           ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(
-                UsuarioRoutes.inserirDadosPagamento,
-              );
-            },
+            // onPressed: () {
+            //   Navigator.of(context).pushNamed(
+            //     UsuarioRoutes.inserirDadosPagamento,
+            //   );
+            // },
+            onPressed: onPressed,
             style: ElevatedButton.styleFrom(
               primary: Theme.of(context).primaryColor,
             ),
-            child: const BodyText1('Comprar'),
+            child: BodyText1(textoBotao),
           ),
           const SizedBox(height: 10),
         ],

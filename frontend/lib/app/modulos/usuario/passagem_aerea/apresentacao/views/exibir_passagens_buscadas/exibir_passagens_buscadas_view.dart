@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 
+import '../../../../../../compartilhado/presentation/routes/usuario_routes.dart';
 import '../../../../../../compartilhado/presentation/widgets/passagem_aerea/passagem_aerea_busca_widget.dart';
 import '../../../../../../compartilhado/presentation/widgets/textos_widget.dart';
 import '../../../dados/datasource/implementacao/passagem_aerea_heroku_remote_datasource.dart';
@@ -39,7 +40,15 @@ class ExibirPassagensBuscadasView extends StatelessWidget {
                   return const InformacoesBuscaPassagemWidget();
                 }
                 int index = i - 1;
-                return PassagemAereaBuscaWidget(passagens[index]);
+                return PassagemAereaBuscaWidget(
+                  passagens[index],
+                  textoBotao: 'Comprar',
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      UsuarioRoutes.inserirDadosPagamento,
+                    );
+                  },
+                );
               },
             ),
           );

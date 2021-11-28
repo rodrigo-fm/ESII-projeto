@@ -1,3 +1,4 @@
+import 'package:aterrissar/app/modulos/usuario/configuracoes/apresentacao/views/solicitar_reembolso/solicitar_reembolso_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,11 +17,11 @@ import 'modulos/usuario/compra/apresentacao/views/inserir_dados_pagamento/inseri
 import 'modulos/usuario/compra/dominio/provider/compra_provider.dart';
 // import 'modulos/usuario/compra/apresentacao/views/inserir_dados_passaporte/inserir_dados_passaporte_view.dart';
 import 'modulos/usuario/compra/apresentacao/views/inserir_dados_pessoais/inserir_dados_pessoais_view.dart';
-import 'modulos/usuario/configuracoes/presentation/views/menu_configuracao_usuario/menu_configuracao_usuario_view.dart';
-import 'modulos/usuario/configuracoes/presentation/views/visualizar_dados_conta/visualizar_dados_conta_view.dart';
+import 'modulos/usuario/configuracoes/apresentacao/views/menu_configuracao_usuario/menu_configuracao_usuario_view.dart';
+import 'modulos/usuario/configuracoes/apresentacao/views/visualizar_dados_conta/visualizar_dados_conta_view.dart';
 import 'modulos/usuario/passagem_aerea/apresentacao/views/buscar_passagem/buscar_passagem_view.dart';
 import 'modulos/usuario/passagem_aerea/apresentacao/views/exibir_passagens_buscadas/exibir_passagens_buscadas_view.dart';
-import 'modulos/usuario/passagem_aerea/apresentacao/views/visualizar_compras/visualizar_compras_view.dart';
+import 'modulos/usuario/configuracoes/apresentacao/views/visualizar_compras/visualizar_compras_view.dart';
 import 'modulos/usuario/suporte/apresentacao/views/pedir_suporte/pedir_suporte_view.dart';
 
 class AppWidget extends StatelessWidget {
@@ -111,8 +112,9 @@ class AppWidget extends StatelessWidget {
               ExibirPassagensBuscadasView(),
           UsuarioRoutes.pedirSuporte: (ctx) => const PedirSuporteView(),
           UsuarioRoutes.menu: (ctx) => MenuConfiguracaoUsuarioView(),
-          UsuarioRoutes.visualizarCompras: (ctx) =>
-              const VisualizarComprasView(),
+          UsuarioRoutes.solicitarReembolso: (ctx) =>
+              const SolicitarReembolsoView(),
+          UsuarioRoutes.visualizarCompras: (ctx) => VisualizarComprasView(),
           UsuarioRoutes.visualizarDadosConta: (ctx) =>
               const VisualizarDadosContaView(),
         },
