@@ -1,11 +1,16 @@
 package br.com.aterrissar.aterrissar.controller.dto;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import br.com.aterrissar.aterrissar.modelo.DadosPessoais;
 
-public class DadosPessoaisDTO {
+public class DadosPessoaisDTO implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String cpf;
 	private String rg;

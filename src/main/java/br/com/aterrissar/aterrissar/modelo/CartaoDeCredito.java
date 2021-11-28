@@ -1,5 +1,6 @@
 package br.com.aterrissar.aterrissar.modelo;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -13,7 +14,12 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "CartaoDeCredito")
-public class CartaoDeCredito {
+public class CartaoDeCredito implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +29,7 @@ public class CartaoDeCredito {
 	@NotBlank
 	private String nomeTitular;
 	@NotBlank
-	private LocalDate validade;
+	private String validade;
 	@NotBlank
 	private String bandeira;
 
@@ -57,6 +63,23 @@ public class CartaoDeCredito {
 
 	public void setBandeira(String bandeira) {
 		this.bandeira = bandeira;
+	}
+
+	
+	public String getNomeTitular() {
+		return nomeTitular;
+	}
+
+	public void setNomeTitular(String nomeTitular) {
+		this.nomeTitular = nomeTitular;
+	}
+	
+	public String getValidade() {
+		return validade;
+	}
+
+	public void setValidade(String validade) {
+		this.validade = validade;
 	}
 
 	@Override

@@ -1,9 +1,15 @@
 package br.com.aterrissar.aterrissar.controller.dto;
 
+import java.io.Serializable;
+
 import br.com.aterrissar.aterrissar.modelo.Usuario;
 
-public class ContaDTO {
-	
+public class ContaDTO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String nomeCompleto;
 	private String email;
