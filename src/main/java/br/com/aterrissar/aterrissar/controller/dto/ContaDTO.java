@@ -15,6 +15,7 @@ public class ContaDTO {
 		this.id = usuario.getId();
 		this.nomeCompleto = usuario.getNomeCompleto();
 		this.email = usuario.getEmail();
+		this.senha = usuario.getSenha();
 	}
 	
 	public Long getId() {

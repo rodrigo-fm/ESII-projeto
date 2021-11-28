@@ -1,8 +1,5 @@
 package br.com.aterrissar.aterrissar.controller.dto;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import br.com.aterrissar.aterrissar.modelo.Usuario;
 
 public class UsuarioDTO {
@@ -36,7 +33,7 @@ public class UsuarioDTO {
 		this.senha = senha;
 	}
 
-	public static List<UsuarioDTO> convert(List<Usuario> topicos) {
-		return topicos.stream().map(UsuarioDTO::new).collect(Collectors.toList()) ;
-	}
+//	public static List<UsuarioDTO> convert(List<Usuario> topicos) {
+//		return topicos.stream().map(UsuarioDTO::new).collect(Collectors.toList()) ;
+//	}
 }

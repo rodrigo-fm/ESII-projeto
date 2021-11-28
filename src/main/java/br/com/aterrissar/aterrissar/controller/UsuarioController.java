@@ -24,17 +24,6 @@ public class UsuarioController {
 	@Autowired	
 	UsuarioService service;
 	
-//	@GetMapping
-//	public ResponseEntity<List<Usuario>> todosOsUsuarios(){
-//		List<Usuario> usuarioLista = usuarioRepository.findAll();
-//		return ResponseEntity.ok().body(usuarioLista);
-//	}
-//
-//	@GetMapping(value = "/{id}")
-//	public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
-//		CategoryDTO dto = service.findById(id);
-//		return ResponseEntity.ok().body(dto);
-//	}
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ContaDTO> buscaContaDeUsuarioPorId(@PathVariable Long id){
 		ContaDTO contaDTO = service.findById(id);
@@ -53,12 +42,6 @@ public class UsuarioController {
 		service.deletarUsuario(id);
 		return ResponseEntity.noContent().build();
 	}
-	
-//	@PutMapping(value = "/{id}")
-//	public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody CategoryDTO dto) {
-//		dto = service.update(id, dto);
-//		return ResponseEntity.ok().body(dto);
-//	}
 	
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<ContaDTO> update(@PathVariable Long id, @RequestBody ContaDTO contaDTO){

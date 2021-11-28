@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -27,7 +26,7 @@ public class DadosPessoais implements Serializable {
 	private String cpf;
 	@NotBlank
 	private String rg;
-	
+
 //	@OneToOne
 //	@JoinColumn(name = "id_usuario") 
 //	Usuario usuario = new Usuario();
@@ -35,6 +34,14 @@ public class DadosPessoais implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "id_passaporte")
 	Passaporte passaporte = new Passaporte();
+
+	public DadosPessoais(Long id, @NotBlank String cpf, @NotBlank String rg, Passaporte passaporte) {
+		super();
+		this.id = id;
+		this.cpf = cpf;
+		this.rg = rg;
+		this.passaporte = passaporte;
+	}
 
 	public DadosPessoais() {
 
