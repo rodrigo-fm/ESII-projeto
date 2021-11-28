@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:aterrissar/app/modulos/autenticacao/data/modelos/dados_pagamento_model.dart';
+import 'package:aterrissar/app/modulos/autenticacao/data/modelos/dados_pessoais_model.dart';
+
 import 'token_model.dart';
 
 class UsuarioModel {
@@ -8,6 +11,8 @@ class UsuarioModel {
   final String email;
   final String tipoUsuario;
   final TokenModel token;
+  final DadosPessoaisModel? dadosPessoais;
+  final DadosPagamentoModel? dadosPagamento;
 
   UsuarioModel({
     required this.id,
@@ -15,15 +20,19 @@ class UsuarioModel {
     required this.tipoUsuario,
     required this.email,
     required this.token,
+    this.dadosPagamento,
+    this.dadosPessoais,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'nome': nome,
-      'tipoUsuario': tipoUsuario,
       'email': email,
+      'tipoUsuario': tipoUsuario,
       'token': token.toMap(),
+      'dadosPessoais': dadosPessoais?.toMap(),
+      'dadosPagamento': dadosPagamento?.toMap(),
     };
   }
 
@@ -31,9 +40,15 @@ class UsuarioModel {
     return UsuarioModel(
       id: map['id'],
       nome: map['nome'],
-      tipoUsuario: map['tipoUsuario'],
       email: map['email'],
+      tipoUsuario: map['tipoUsuario'],
       token: TokenModel.fromMap(map['token']),
+      dadosPessoais: map['dadosPessoais'] != null
+          ? DadosPessoaisModel.fromMap(map['dadosPessoais'])
+          : null,
+      dadosPagamento: map['dadosPagamento'] != null
+          ? DadosPagamentoModel.fromMap(map['dadosPagamento'])
+          : null,
     );
   }
 

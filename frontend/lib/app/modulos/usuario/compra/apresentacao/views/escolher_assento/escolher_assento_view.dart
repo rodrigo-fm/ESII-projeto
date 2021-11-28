@@ -15,7 +15,7 @@ class EscolherAssentoView extends StatelessWidget {
       body: ListView(
         shrinkWrap: true,
         children: [
-          const Headline1('Etapa 4 de 4'),
+          const Headline1('Etapa 3 de 3'),
           const Headline2('Escolher assento'),
           ElevatedButton(
             child: const BodyText1('Escolher'),

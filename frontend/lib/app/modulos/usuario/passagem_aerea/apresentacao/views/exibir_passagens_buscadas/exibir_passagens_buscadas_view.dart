@@ -13,7 +13,6 @@ class ExibirPassagensBuscadasView extends StatelessWidget {
   final passagemController = PassagemAereaController();
   @override
   Widget build(BuildContext context) {
-    List<int> passagens = [1, 2, 3];
     return Scaffold(
       appBar: AppBar(
         title: const Headline3('Voos'),

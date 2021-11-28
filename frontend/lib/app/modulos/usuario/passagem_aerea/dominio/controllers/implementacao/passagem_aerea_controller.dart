@@ -12,7 +12,7 @@ class PassagemAereaController implements IPassagemAereaController {
     IPassagemAereaRemoteDatasource datasource,
   ) async {
     try {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
 
       List<PassagemAereaModel> resultado = [];
       for (int i = 0; i < 8; i++) {

@@ -9,7 +9,9 @@ class ConfirmarCompraView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Headline3('Confirmar compra'),
+      ),
       body: ListView(
         children: [
           const Text(
@@ -17,8 +19,8 @@ class ConfirmarCompraView extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pushReplacementNamed(
-                UsuarioRoutes.buscarPassagens,
+              Navigator.of(context).pushNamed(
+                UsuarioRoutes.exibirNormasVoo,
               );
             },
             child: const BodyText1('Confirmar'),
