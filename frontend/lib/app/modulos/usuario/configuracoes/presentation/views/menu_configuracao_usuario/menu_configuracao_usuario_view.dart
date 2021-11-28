@@ -1,13 +1,15 @@
-import 'package:aterrissar/app/compartilhado/presentation/routes/usuario_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../compartilhado/domain/providers/autenticacao_provider.dart';
+import '../../../../../../compartilhado/presentation/routes/usuario_routes.dart';
 import '../../../../../../compartilhado/presentation/widgets/menu_configuracao/menu_configuracao_list_tile_widget.dart';
 import '../../../../../../compartilhado/presentation/widgets/textos_widget.dart';
+import 'menu_configuracao_usuario_viewcontroller.dart';
 
 class MenuConfiguracaoUsuarioView extends StatelessWidget {
-  const MenuConfiguracaoUsuarioView({Key? key}) : super(key: key);
+  MenuConfiguracaoUsuarioView({Key? key}) : super(key: key);
+  final viewcontroller = MenuConfiguracaoUsuarioViewcontroller();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,9 @@ class MenuConfiguracaoUsuarioView extends StatelessWidget {
                 MenuConfiguracaoListTileWidget(
                   icone: const Icon(Icons.cake),
                   opcao: 'Sair',
-                  onTap: () {},
+                  onTap: () async {
+                    await viewcontroller.logout(context);
+                  },
                 ),
               ],
             ),

@@ -1,3 +1,4 @@
+import 'package:aterrissar/app/compartilhado/domain/helpers/snackbar_helper.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../compartilhado/presentation/routes/usuario_routes.dart';
@@ -54,14 +55,11 @@ class LoginViewController {
       } else {
         if (loading) {
           loading = false;
-          // esconde o widget de loading
           Navigator.of(ctx).pop();
         }
         if (value is FalhaLoginState) {
-          // exibir mensagem de erro
-          // usar o atributo "value.mensagem" na mensagem
+          SnackBarHelper.exibirErro(ctx, value.mensagem);
         } else if (value is SucessoLoginState) {
-          // Navigator.of(ctx).pushNamed(UsuarioRoutes.home);
           Navigator.of(ctx).pushReplacementNamed(UsuarioRoutes.buscarPassagens);
         }
       }

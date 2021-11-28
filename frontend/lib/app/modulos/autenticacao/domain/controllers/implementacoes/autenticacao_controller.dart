@@ -29,9 +29,21 @@ class AutenticacaoController implements IAutenticacaoController {
   }
 
   @override
-  Future<void> criarConta() {
-    // TODO: implement criarConta
-    throw UnimplementedError();
+  Future<Either<String, bool>> criarConta(
+    String nome,
+    String email,
+    String senha,
+    IAutenticacaoRemoteDatasource datasource,
+  ) async {
+    try {
+      final resultado = await datasource.criarConta(nome, email, senha);
+      if (resultado.statusCode == 201) {
+        return const Right(true);
+      }
+      return const Left('Erro de requisição');
+    } catch (e) {
+      return const Left('erro');
+    }
   }
 
   @override
@@ -54,8 +66,14 @@ class AutenticacaoController implements IAutenticacaoController {
   }
 
   @override
-  Future<void> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
+  Future<Either<String, bool>> logout(
+    IAutenticacaoLocalDatasource localDatasource,
+  ) async {
+    try {
+      await localDatasource.removeLocalData();
+      return const Right(true);
+    } catch (e) {
+      return const Left('Erro ao sair, tente novamente mais tarde');
+    }
   }
 }

@@ -11,9 +11,23 @@ class AutenticacaoHerokuRemoteDatasource
   String apiURL = 'https://pacific-ravine-59367.herokuapp.com';
 
   @override
-  Future<http.Response> criarConta(String email, String senha) {
-    // TODO: implement criarConta
-    throw UnimplementedError();
+  Future<http.Response> criarConta(
+    String nome,
+    String email,
+    String senha,
+  ) async {
+    return await http.post(
+      Uri.parse('$apiURL/usuario'),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'nomeCompleto': nome,
+        'email': email,
+        'senha': senha,
+        'dadosPessoais': null,
+      }),
+    );
   }
 
   @override

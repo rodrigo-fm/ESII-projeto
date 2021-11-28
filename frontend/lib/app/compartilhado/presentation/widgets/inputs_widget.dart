@@ -42,9 +42,11 @@ class InputEmail extends StatelessWidget {
 
 class InputPassword extends StatelessWidget {
   final TextEditingController controller;
+  final String? label;
   const InputPassword({
     Key? key,
     required this.controller,
+    this.label,
   }) : super(key: key);
 
   String? validarPassword(String? valor) {
@@ -62,9 +64,9 @@ class InputPassword extends StatelessWidget {
         controller: controller,
         obscureText: true,
         validator: validarPassword,
-        decoration: const InputDecoration(
-          label: BodyText1('Senha'),
-          prefixIcon: Icon(Icons.lock),
+        decoration: InputDecoration(
+          label: BodyText1(label ?? 'Senha'),
+          prefixIcon: const Icon(Icons.lock),
         ),
       ),
     );

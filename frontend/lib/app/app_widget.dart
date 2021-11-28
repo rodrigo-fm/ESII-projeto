@@ -1,3 +1,4 @@
+import 'package:aterrissar/app/modulos/autenticacao/presentation/views/criar_conta/criar_conta_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -87,6 +88,7 @@ class AppWidget extends StatelessWidget {
         themeMode: ThemeMode.dark,
         routes: {
           GlobalRoutes.autoLogin: (ctx) => AutoLoginView(),
+          GlobalRoutes.criarConta: (ctx) => CriarContaView(),
           GlobalRoutes.login: (ctx) => const LoginView(),
           GlobalRoutes.loading: (ctx) => const SplashScreenView(),
           UsuarioRoutes.buscarPassagens: (ctx) => BuscarPassagemView(),
@@ -101,7 +103,7 @@ class AppWidget extends StatelessWidget {
           UsuarioRoutes.exibirPassagensBuscadas: (ctx) =>
               const ExibirPassagensBuscadasView(),
           UsuarioRoutes.pedirSuporte: (ctx) => const PedirSuporteView(),
-          UsuarioRoutes.menu: (ctx) => const MenuConfiguracaoUsuarioView(),
+          UsuarioRoutes.menu: (ctx) => MenuConfiguracaoUsuarioView(),
           UsuarioRoutes.visualizarCompras: (ctx) =>
               const VisualizarComprasView(),
           UsuarioRoutes.visualizarDadosConta: (ctx) =>

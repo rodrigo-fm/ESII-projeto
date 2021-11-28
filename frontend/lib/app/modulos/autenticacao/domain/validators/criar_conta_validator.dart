@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class CriarContaValidator {
-  bool call(
+  String? call(
     GlobalKey<FormState> formKey,
-    Map<String, TextEditingController> formControllers,
+    String senha,
+    String confirmarSenha,
   ) {
-    if (formKey.currentState!.validate()) {
-      return false;
+    if (!formKey.currentState!.validate()) {
+      return '';
     }
-    if (formControllers['senha']! != formControllers['confirmarSenha']!) {
-      return false;
+    if (senha != confirmarSenha) {
+      return 'Os campos "Senha" e "Confirmar senha" apresentam valores diferentes';
     }
-    return true;
+    return null;
   }
 }

@@ -13,10 +13,17 @@ abstract class IAutenticacaoController {
     IAutenticacaoLocalDatasource localDatasource,
     BuildContext ctx,
   );
-  Future<void> logout();
+  Future<Either<String, bool>> logout(
+    IAutenticacaoLocalDatasource localDatasource,
+  );
   Future<UsuarioModel?> autoLogin(
     BuildContext ctx,
     IAutenticacaoLocalDatasource localDatasource,
   );
-  Future<void> criarConta();
+  Future<Either<String, bool>> criarConta(
+    String nome,
+    String email,
+    String senha,
+    IAutenticacaoRemoteDatasource datasource,
+  );
 }

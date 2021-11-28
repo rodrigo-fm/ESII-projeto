@@ -1,19 +1,14 @@
-import 'package:aterrissar/app/compartilhado/presentation/routes/global_routes.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../compartilhado/presentation/routes/global_routes.dart';
 import '../../../../../compartilhado/presentation/widgets/inputs_widget.dart';
 import '../../../../../compartilhado/presentation/widgets/textos_widget.dart';
-import 'login_viewcontroller.dart';
+import 'criar_conta_viewcontroller.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class CriarContaView extends StatelessWidget {
+  CriarContaView({Key? key}) : super(key: key);
+  final _viewcontroller = CriarContaViewcontroller();
 
-  @override
-  _LoginViewState createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
-  final _viewcontroller = LoginViewController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,11 +19,19 @@ class _LoginViewState extends State<LoginView> {
             padding: const EdgeInsets.all(16),
             shrinkWrap: true,
             children: [
+              InputNome(
+                controller: _viewcontroller.inputControllers['nome']!,
+                label: 'Nome',
+              ),
               InputEmail(
                 controller: _viewcontroller.inputControllers['email']!,
               ),
               InputPassword(
-                controller: _viewcontroller.inputControllers['password']!,
+                controller: _viewcontroller.inputControllers['senha']!,
+              ),
+              InputPassword(
+                controller: _viewcontroller.inputControllers['confirmarSenha']!,
+                label: 'Confirmar senha',
               ),
               const SizedBox(height: 30),
               ElevatedButton(
@@ -37,14 +40,14 @@ class _LoginViewState extends State<LoginView> {
                   primary: Theme.of(context).primaryColor,
                   fixedSize: const Size(double.infinity, 45.0),
                 ),
-                onPressed: () => _viewcontroller.login(context),
+                onPressed: () => _viewcontroller.criarConta(context),
               ),
               const SizedBox(height: 15),
               TextButton(
-                child: const BodyText1('Cadastre-se'),
+                child: const BodyText1('Já possui uma conta? Entrar'),
                 onPressed: () {
                   Navigator.of(context).pushReplacementNamed(
-                    GlobalRoutes.criarConta,
+                    GlobalRoutes.login,
                   );
                 },
               ),
