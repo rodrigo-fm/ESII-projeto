@@ -41,6 +41,26 @@ public class CartaoDeCredito implements Serializable{
 
 	}
 
+	public CartaoDeCredito(Long id, @NotBlank String numeroCartao, @NotBlank String nomeTitular,
+			@NotBlank String validade, @NotBlank String bandeira) {
+		super();
+		this.id = id;
+		this.numeroCartao = numeroCartao;
+		this.nomeTitular = nomeTitular;
+		this.validade = validade;
+		this.bandeira = bandeira;
+	}
+
+
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	public Long getId() {
 		return id;
 	}

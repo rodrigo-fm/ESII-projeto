@@ -33,6 +33,7 @@ public class CartaoDeCreditoService {
 		cartao.setNumeroCartao(cartaoDTO.getNumeroCartao());
 		cartao.setBandeira(cartaoDTO.getBandeira());
 		cartao.setValidade(cartaoDTO.getValidade());
+		cartao.setUsuario(null);
 		repository.save(cartao);
 		return new CartaoDeCreditoDTO(cartao);
 	}

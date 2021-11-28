@@ -26,13 +26,13 @@ public class CartaoDeCreditoController {
 	CartaoDeCreditoService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<CartaoDeCreditoDTO> buscaContaDeUsuarioPorId(@PathVariable Long id){
+	public ResponseEntity<CartaoDeCreditoDTO> buscaCartaoPorId(@PathVariable Long id){
 		CartaoDeCreditoDTO cartaoDTO = service.findById(id);
 		return ResponseEntity.ok().body(cartaoDTO);
 	}
 	
 	@PostMapping
-	public ResponseEntity<CartaoDeCreditoDTO> inserirNovaContaDeUsuario(@RequestBody CartaoDeCreditoDTO cartaoDTO){
+	public ResponseEntity<CartaoDeCreditoDTO> inserirNovoCartaoDeCredito(@RequestBody CartaoDeCreditoDTO cartaoDTO){
 		cartaoDTO = service.insereNovosCartaoDeCredito(cartaoDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cartaoDTO.getId()).toUri();
 		return ResponseEntity.created(uri).body(cartaoDTO);
