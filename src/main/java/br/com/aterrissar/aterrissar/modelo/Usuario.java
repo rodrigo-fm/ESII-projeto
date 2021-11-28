@@ -36,6 +36,18 @@ public class Usuario implements Serializable {
 	
 	public Usuario () {}
 	
+	public Usuario(Long id, @NotBlank String nomeCompleto, @NotBlank String email, @NotBlank String senha,
+			DadosPessoais dadosPessoais) {
+		super();
+		this.id = id;
+		this.nomeCompleto = nomeCompleto;
+		this.email = email;
+		this.senha = senha;
+		this.dadosPessoais = dadosPessoais;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}

@@ -14,13 +14,13 @@ import br.com.aterrissar.aterrissar.repository.ContaRepository;
 @RestController
 public class ContaController {
 	
-	@Autowired
-	ContaRepository contaRepository;
-	
-	@RequestMapping("contas")
-	public List<ContaDTO> todosOsUsuarios(){
-		List<Usuario> contas = contaRepository.findAll();
-		return ContaDTO.convert(contas);
-	}
+//	@Autowired
+//	ContaRepository contaRepository;
+//	
+//	@RequestMapping("contas")
+//	public List<ContaDTO> todosOsUsuarios(){
+//		List<Usuario> contas = contaRepository.findAll();
+//		return ContaDTO.convert(contas);
+//	}
 
 }
