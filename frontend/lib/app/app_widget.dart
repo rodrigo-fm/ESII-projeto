@@ -101,7 +101,7 @@ class AppWidget extends StatelessWidget {
               InserirDadosPessoaisView(),
           UsuarioRoutes.escolherAssento: (ctx) => const EscolherAssentoView(),
           UsuarioRoutes.exibirPassagensBuscadas: (ctx) =>
-              const ExibirPassagensBuscadasView(),
+              ExibirPassagensBuscadasView(),
           UsuarioRoutes.pedirSuporte: (ctx) => const PedirSuporteView(),
           UsuarioRoutes.menu: (ctx) => MenuConfiguracaoUsuarioView(),
           UsuarioRoutes.visualizarCompras: (ctx) =>
