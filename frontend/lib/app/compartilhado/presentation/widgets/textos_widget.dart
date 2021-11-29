@@ -114,3 +114,34 @@ class BodyText1 extends StatelessWidget {
     );
   }
 }
+
+class BodyText2 extends StatelessWidget {
+  final String texto;
+  final Color? color;
+  final TextAlign? textAlign;
+  const BodyText2(
+    this.texto, {
+    Key? key,
+    this.color,
+    this.textAlign,
+  }) : super(key: key);
+
+  TextStyle? _estiloEscolhido(BuildContext ctx) {
+    TextStyle? retorno = Theme.of(ctx).textTheme.bodyText2;
+    if (color != null) {
+      retorno = retorno!.copyWith(
+        color: color,
+      );
+    }
+    return retorno;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      texto,
+      style: _estiloEscolhido(context),
+      textAlign: textAlign ?? TextAlign.left,
+    );
+  }
+}
