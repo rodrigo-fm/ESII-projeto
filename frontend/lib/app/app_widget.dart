@@ -1,3 +1,4 @@
+import 'package:aterrissar/app/modulos/atendente_suporte/configuracoes/apresentacao/views/pedidos/pedidos_suporte_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -5,8 +6,10 @@ import 'package:aterrissar/app/modulos/autenticacao/presentation/views/criar_con
 
 import 'compartilhado/domain/providers/autenticacao_provider.dart';
 import 'compartilhado/presentation/routes/global_routes.dart';
+import 'compartilhado/presentation/routes/suporte_routes.dart';
 import 'compartilhado/presentation/routes/usuario_routes.dart';
 import 'compartilhado/presentation/views/splash_screen/splash_screen_view.dart';
+import 'modulos/atendente_suporte/configuracoes/apresentacao/menu_suporte/menu_suporte.dart';
 import 'modulos/autenticacao/presentation/views/auto_login/auto_login_view.dart';
 import 'modulos/autenticacao/presentation/views/login/login_view.dart';
 import 'modulos/usuario/compra/apresentacao/views/confirmar_compra/confirmar_compra_view.dart';
@@ -115,6 +118,8 @@ class AppWidget extends StatelessWidget {
               const VisualizarComprasView(),
           UsuarioRoutes.visualizarDadosConta: (ctx) =>
               const VisualizarDadosContaView(),
+          SuporteRoutes.menu: (ctx) => MenuConfiguracaoSuporteView(),
+          SuporteRoutes.visualizarPedidos: (ctx) => const PedidosSuporteView(),
         },
         initialRoute: GlobalRoutes.autoLogin,
       ),
