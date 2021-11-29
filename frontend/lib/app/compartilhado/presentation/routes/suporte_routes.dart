@@ -1,3 +1,4 @@
 class SuporteRoutes {
-  static const home = '/suporte';
+  static const menu = '/menu/atendente_suporte/';
+  static const visualizarPedidos = '/atendente_suporte/pedidos/visualizar';
 }
