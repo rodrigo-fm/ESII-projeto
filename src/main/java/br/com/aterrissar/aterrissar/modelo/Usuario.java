@@ -20,7 +20,8 @@ public class Usuario implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
 	private String nomeCompleto;
@@ -29,58 +30,72 @@ public class Usuario implements Serializable {
 	private String email;
 	@NotBlank
 	private String senha;
-	
+	private String tipoUsuario;
+
 	@OneToOne
 	@JoinColumn(name = "id_dados_pessoais")
-	DadosPessoais dadosPessoais = new DadosPessoais();	
-	
-	public Usuario () {}
-	
+	DadosPessoais dadosPessoais = new DadosPessoais();
+
+	public Usuario() {
+	}
+
 	public Usuario(Long id, @NotBlank String nomeCompleto, @NotBlank String email, @NotBlank String senha,
-			DadosPessoais dadosPessoais) {
+			String tipoUsuario, DadosPessoais dadosPessoais) {
 		super();
 		this.id = id;
 		this.nomeCompleto = nomeCompleto;
 		this.email = email;
 		this.senha = senha;
+		this.tipoUsuario = tipoUsuario;
 		this.dadosPessoais = dadosPessoais;
 	}
-
-
 
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getNomeCompleto() {
 		return nomeCompleto;
 	}
+
 	public void setNomeCompleto(String nomeCompleto) {
 		this.nomeCompleto = nomeCompleto;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getSenha() {
 		return senha;
 	}
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public DadosPessoais getDadosPessoais() {
 		return dadosPessoais;
 	}
 
 	public void setDadosPessoais(DadosPessoais dadosPessoais) {
 		this.dadosPessoais = dadosPessoais;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	@Override
@@ -108,5 +123,4 @@ public class Usuario implements Serializable {
 		return true;
 	}
 
-	
 }

@@ -53,7 +53,6 @@ public class DadosPessoaisService {
 	}
 
 	@Transactional
-
 	public DadosPessoaisDTO update(Long id, DadosPessoaisDTO dadosDTO) {
 		try {
 			DadosPessoais dados = repository.getOne(id);

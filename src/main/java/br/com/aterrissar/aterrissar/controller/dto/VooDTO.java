@@ -11,9 +11,11 @@ public class VooDTO implements Serializable{
 	private Long id;
 	private String origem;
 	private String destino;
-	private LocalDateTime dataPartida;
+	private String dataPartida;
 	private Integer duracao;
 	private String companhiaAerea;
+	
+	public VooDTO() {}
 	
 	public VooDTO(Voo voo) {
 		super();
@@ -43,10 +45,10 @@ public class VooDTO implements Serializable{
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
-	public LocalDateTime getDataPartida() {
+	public String getDataPartida() {
 		return dataPartida;
 	}
-	public void setDataPartida(LocalDateTime dataPartida) {
+	public void setDataPartida(String dataPartida) {
 		this.dataPartida = dataPartida;
 	}
 	public Integer getDuracao() {

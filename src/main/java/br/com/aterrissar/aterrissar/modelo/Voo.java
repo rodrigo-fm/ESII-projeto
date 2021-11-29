@@ -1,7 +1,6 @@
 package br.com.aterrissar.aterrissar.modelo;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +12,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "Voo")
-public class Voo implements Serializable{
-
-	/**
-	 * 
-	 */
+public class Voo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -28,13 +23,22 @@ public class Voo implements Serializable{
 	@NotBlank
 	private String destino;
 	@NotBlank
-	private LocalDateTime dataPartida;
-	@NotBlank
+	private String dataPartida;
 	private Integer duracao;
 	private String companhiaAerea;
-	
 
 	public Voo() {
+	}
+
+	public Voo(Long id, @NotBlank String origem, @NotBlank String destino, @NotBlank String dataPartida,
+			Integer duracao, String companhiaAerea) {
+		super();
+		this.id = id;
+		this.origem = origem;
+		this.destino = destino;
+		this.dataPartida = dataPartida;
+		this.duracao = duracao;
+		this.companhiaAerea = companhiaAerea;
 	}
 
 	public Long getId() {
@@ -61,11 +65,11 @@ public class Voo implements Serializable{
 		this.destino = destino;
 	}
 
-	public LocalDateTime getDataPartida() {
+	public String getDataPartida() {
 		return dataPartida;
 	}
 
-	public void setDataPartida(LocalDateTime dataPartida) {
+	public void setDataPartida(String dataPartida) {
 		this.dataPartida = dataPartida;
 	}
 

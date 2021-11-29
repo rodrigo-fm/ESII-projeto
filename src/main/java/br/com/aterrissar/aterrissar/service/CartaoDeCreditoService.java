@@ -47,21 +47,6 @@ public class CartaoDeCreditoService {
 		return new CartaoDeCreditoDTO(cartao);
 	}
 	
-//	@GetMapping
-//	public List<TopicoDto> lista(String nomeCurso) {
-//		if (nomeCurso == null) {
-//			List<Topico> topicos = topicoRepository.findAll();
-//			return TopicoDto.converter(topicos);
-//		} else {
-//			List<Topico> topicos = topicoRepository.findByCursoNome(nomeCurso);
-//			return TopicoDto.converter(topicos);
-//		}
-//	}
-//	@GetMapping(path = "all")
-//	public ResponseEntity<List<CartaoDeCredito>> getAllCartoes() {
-//		return ResponseEntity.ok().body(cartaoDeCreditoRepository.findAll());
-//	}
-	
 	@Transactional
 	public List<CartaoDeCreditoDTO> listaTodosOsCartoesDoUsuario(Long id) {
 		List<CartaoDeCredito> cartao = repository.findAll();

@@ -1,6 +1,7 @@
 package br.com.aterrissar.aterrissar.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,11 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class PassagemAerea implements Serializable{
-
-	/**
-	 * 
-	 */
+public class PassagemAerea implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -25,13 +22,20 @@ public class PassagemAerea implements Serializable{
 	private String classe;
 	@NotBlank
 	private Double preco;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "id_voo") 
-	Voo voo = new Voo(); 
-	
+	@JoinColumn(name = "id_voo")
+	private Voo voo = new Voo();
 
 	public PassagemAerea() {
+	}
+
+	public PassagemAerea(Long id, @NotBlank String classe, @NotBlank Double preco, Voo voo) {
+		super();
+		this.id = id;
+		this.classe = classe;
+		this.preco = preco;
+		this.voo = voo;
 	}
 
 	public Long getId() {
@@ -56,6 +60,14 @@ public class PassagemAerea implements Serializable{
 
 	public void setPreco(Double preco) {
 		this.preco = preco;
+	}
+
+	public Voo getVoo() {
+		return voo;
+	}
+
+	public void setVoo(Voo voo) {
+		this.voo = voo;
 	}
 
 	@Override
@@ -83,5 +95,4 @@ public class PassagemAerea implements Serializable{
 		return true;
 	}
 
-	
 }

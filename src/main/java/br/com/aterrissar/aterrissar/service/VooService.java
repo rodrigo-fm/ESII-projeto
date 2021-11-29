@@ -27,7 +27,7 @@ public class VooService {
 	public VooDTO insereUmNovoVoo(VooDTO vooDTO) {
 		Voo voo = new Voo();
 		voo.setId(vooDTO.getId());
-		voo.setOrigem(vooDTO.getDestino());
+		voo.setOrigem(vooDTO.getOrigem());
 		voo.setCompanhiaAerea(vooDTO.getCompanhiaAerea());
 		voo.setDuracao(vooDTO.getDuracao());
 		voo.setDestino(vooDTO.getDestino());

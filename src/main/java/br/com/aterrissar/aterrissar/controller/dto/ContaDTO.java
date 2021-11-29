@@ -43,7 +43,4 @@ public class ContaDTO implements Serializable{
 		this.senha = senha;
 	}
 
-//	public static ContaDTO convert(Usuario topicos) {
-//		return topicos.map(ContaDTO::new).collect(Collectors.toList()) ;
-//	}
 }

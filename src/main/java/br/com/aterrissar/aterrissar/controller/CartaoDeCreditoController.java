@@ -1,6 +1,7 @@
 package br.com.aterrissar.aterrissar.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.aterrissar.aterrissar.controller.dto.CartaoDeCreditoDTO;
-import br.com.aterrissar.aterrissar.controller.dto.DadosPessoaisDTO;
 import br.com.aterrissar.aterrissar.service.CartaoDeCreditoService;
 
 @RestController
@@ -32,8 +32,8 @@ public class CartaoDeCreditoController {
 	}
 	
 	@GetMapping(value = "/usuario/{id}")
-	public ResponseEntity<CartaoDeCreditoDTO> buscaListaDeCartaoPorId(@PathVariable Long id){
-		CartaoDeCreditoDTO cartaoDTO = (CartaoDeCreditoDTO) service.listaTodosOsCartoesDoUsuario(id);
+	public ResponseEntity<List<CartaoDeCreditoDTO>> buscaListaDeCartaoPorId(@PathVariable Long id){
+		List<CartaoDeCreditoDTO> cartaoDTO = service.listaTodosOsCartoesDoUsuario(id);
 		return ResponseEntity.ok().body(cartaoDTO);
 	}
 	
