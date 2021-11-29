@@ -31,16 +31,12 @@ public class DadosPessoais implements Serializable {
 //	@JoinColumn(name = "id_usuario") 
 //	Usuario usuario = new Usuario();
 
-	@OneToOne
-	@JoinColumn(name = "id_passaporte")
-	Passaporte passaporte = new Passaporte();
 
-	public DadosPessoais(Long id, @NotBlank String cpf, @NotBlank String rg, Passaporte passaporte) {
+	public DadosPessoais(Long id, @NotBlank String cpf, @NotBlank String rg) {
 		super();
 		this.id = id;
 		this.cpf = cpf;
 		this.rg = rg;
-		this.passaporte = passaporte;
 	}
 
 	public DadosPessoais() {
@@ -79,13 +75,6 @@ public class DadosPessoais implements Serializable {
 		return result;
 	}
 
-	public Passaporte getPassaporte() {
-		return passaporte;
-	}
-
-	public void setPassaporte(Passaporte passaporte) {
-		this.passaporte = passaporte;
-	}
 
 	@Override
 	public boolean equals(Object obj) {

@@ -29,7 +29,6 @@ public class DadosPessoaisService {
 		dados.setId(dadosDTO.getId());
 		dados.setRg(dadosDTO.getRg());
 		dados.setCpf(dadosDTO.getCpf());
-		dados.setPassaporte(null);
 		repository.save(dados);
 		return new DadosPessoaisDTO(dados);
 	}

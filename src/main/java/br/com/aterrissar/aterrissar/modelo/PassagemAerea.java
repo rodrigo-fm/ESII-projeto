@@ -20,7 +20,6 @@ public class PassagemAerea implements Serializable {
 	private Long id;
 	@NotBlank
 	private String classe;
-	@NotBlank
 	private Double preco;
 
 	@ManyToOne

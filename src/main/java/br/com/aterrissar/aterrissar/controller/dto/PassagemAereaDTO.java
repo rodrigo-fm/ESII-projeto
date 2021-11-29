@@ -66,4 +66,16 @@ public class PassagemAereaDTO implements Serializable {
 		return passagemAerea.stream().map(PassagemAereaDTO::new).collect(Collectors.toList());
 	}
 
+	public void setVoo(long id, String origem, String destino, String dataPartida, 
+			Integer duracao, String companhiaAerea) {
+		Voo voo = new Voo();
+		voo.setId(id);
+		voo.setOrigem(origem);
+		voo.setDestino(destino);
+		voo.setDataPartida(dataPartida);
+		voo.setCompanhiaAerea(companhiaAerea);
+		voo.setDuracao(duracao);
+		this.setVoo(voo);
+	}
+
 }

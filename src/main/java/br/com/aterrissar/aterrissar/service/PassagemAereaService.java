@@ -33,6 +33,7 @@ public class PassagemAereaService {
 		passagem.setId(passagemAereaDTO.getId());
 		passagem.setVoo(passagemAereaDTO.getVoo());
 		passagem.setPreco(passagemAereaDTO.getPreco());
+		passagem.setClasse(passagemAereaDTO.getClasse());
 		repository.save(passagem);
 		return new PassagemAereaDTO(passagem);
 	}
