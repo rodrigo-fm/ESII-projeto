@@ -40,14 +40,6 @@ public class PassagemAereaController {
 		return ResponseEntity.ok().body(passagemDTO);
 	}
 
-//	@PostMapping
-//	public ResponseEntity<PassagemAereaDTO> inserirNovoCartaoDeCredito(@RequestBody PassagemAereaDTO passagemDTO){
-//		passagemDTO = service.insereNovaPassagem(passagemDTO);
-//		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(passagemDTO.getId()).toUri();
-//		return ResponseEntity.created(uri).body(passagemDTO);
-//	}
-//	
-
 	@PostMapping
 	public ResponseEntity<PassagemAereaDTO> inserirNovaPassagemAerea(@RequestBody ObjectNode json) {
 		PassagemAereaDTO passagemDTO = new PassagemAereaDTO();
