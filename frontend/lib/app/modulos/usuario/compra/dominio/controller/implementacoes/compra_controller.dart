@@ -41,4 +41,17 @@ class CompraController implements ICompraController {
       return const Left('Erro ao resgatar compras');
     }
   }
+
+  @override
+  Future<Either<String, bool>> comprarPassagem(
+    ICompraRemoteDatasource datasource,
+    int idUsuario,
+  ) async {
+    try {
+      final resultado = await datasource.comprarPassagem(idUsuario);
+      return Right(resultado.statusCode == 201);
+    } catch (e) {
+      return const Left('Erro de conexão');
+    }
+  }
 }

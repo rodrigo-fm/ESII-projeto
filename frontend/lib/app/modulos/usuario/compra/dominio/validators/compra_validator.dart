@@ -1,0 +1,3 @@
+class CompraValidator {
+  String? call() {}
+}

@@ -8,4 +8,9 @@ abstract class ICompraController {
     int idUsuario,
     ICompraRemoteDatasource datasource,
   );
+
+  Future<Either<String, bool>> comprarPassagem(
+    ICompraRemoteDatasource datasource,
+    int idUsuario,
+  );
 }

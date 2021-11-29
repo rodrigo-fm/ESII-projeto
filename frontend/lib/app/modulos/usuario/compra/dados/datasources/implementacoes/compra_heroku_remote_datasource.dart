@@ -4,8 +4,16 @@ import '../compra_remote_datasource_interface.dart';
 
 class CompraHerokuRemoteDatasource implements ICompraRemoteDatasource {
   @override
-  Future<http.Response> getHistoricoCompras(int idUsuario) async {
+  Future<http.Response> getHistoricoCompras(
+    int idUsuario,
+  ) async {
     // TODO: implement getHistoricoCompras
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<http.Response> comprarPassagem(int idUsuario) async {
+    // TODO: implement comprarPassagem
     throw UnimplementedError();
   }
 }

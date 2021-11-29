@@ -6,11 +6,13 @@ class DialogHelper {
   static bool dialogExibido = false;
 
   static void exibirLoading(BuildContext ctx) {
-    DialogHelper.dialogExibido = true;
-    showDialog(
-      context: ctx,
-      builder: (ctx) => const LoadingDialogWidget(),
-    );
+    if (!DialogHelper.dialogExibido) {
+      DialogHelper.dialogExibido = true;
+      showDialog(
+        context: ctx,
+        builder: (ctx) => const LoadingDialogWidget(),
+      );
+    }
   }
 
   static void esconderDialog(BuildContext ctx) {

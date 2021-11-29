@@ -107,8 +107,11 @@ class InserirDadosPessoaisView extends StatelessWidget with ChangeNotifier {
                       _viewcontroller.inputControllers,
                     );
                   }
+                  // Navigator.of(context).pushNamed(
+                  //   UsuarioRoutes.escolherAssento,
+                  // );
                   Navigator.of(context).pushNamed(
-                    UsuarioRoutes.escolherAssento,
+                    UsuarioRoutes.confirmarCompra,
                   );
                 },
               ),
