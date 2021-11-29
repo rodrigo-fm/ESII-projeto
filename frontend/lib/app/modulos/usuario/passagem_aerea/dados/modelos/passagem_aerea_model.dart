@@ -41,4 +41,13 @@ class PassagemAereaModel {
 
   factory PassagemAereaModel.fromJson(String source) =>
       PassagemAereaModel.fromMap(json.decode(source));
+
+  static List<PassagemAereaModel> fromJsonList(String source) {
+    final data = json.decode(source) as List<dynamic>;
+    List<PassagemAereaModel> resultado = [];
+    for (var item in data) {
+      resultado.add(PassagemAereaModel.fromMap(item));
+    }
+    return resultado;
+  }
 }

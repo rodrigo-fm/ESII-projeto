@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinbox/material.dart';
 
 import '../../../../../../compartilhado/presentation/routes/usuario_routes.dart';
+import '../../../../../../compartilhado/presentation/widgets/inputs_widget.dart';
 import '../../../../../../compartilhado/presentation/widgets/textos_widget.dart';
+import 'buscar_passagem_viewcontroller.dart';
 import 'widgets/escolher_data_widget.dart';
 import 'widgets/ida_e_volta_widget.dart';
 
 class BuscarPassagemView extends StatelessWidget {
-  final ValueNotifier<bool> _idaEVolta = ValueNotifier<bool>(true);
-  final Map<String, ValueNotifier<DateTime?>> _datasNotifier = {
-    'ida': ValueNotifier<DateTime?>(null),
-    'volta': ValueNotifier<DateTime?>(null),
-  };
   final _formKey = GlobalKey<FormState>();
+  final _viewcontroller = BuscarPassagemViewcontroller();
   BuscarPassagemView({Key? key}) : super(key: key);
 
   @override
@@ -33,8 +32,6 @@ class BuscarPassagemView extends StatelessWidget {
         key: _formKey,
         child: ListView(
           children: [
-            // TOOD: componentizar este container inteiro como o cabeçalho
-            // da busca da tela inicial
             Container(
               color: const Color(0xFF001db4),
               padding: const EdgeInsets.all(35),
@@ -42,13 +39,14 @@ class BuscarPassagemView extends StatelessWidget {
                 children: [
                   const Headline2('Passagens aéreas'),
                   const SizedBox(height: 30),
-                  IdaEVoltaWidget(notifier: _idaEVolta),
+                  IdaEVoltaWidget(notifier: _viewcontroller.idaEVolta),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(16),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,20 +55,21 @@ class BuscarPassagemView extends StatelessWidget {
                         flex: 6,
                         child: EscolherDataWidget(
                             textoEscolherValor: 'Ida',
-                            notifier: _datasNotifier['ida']!),
+                            notifier: _viewcontroller.datasNotifier['ida']!),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         flex: 6,
                         child: ValueListenableBuilder<bool>(
-                          valueListenable: _idaEVolta,
+                          valueListenable: _viewcontroller.idaEVolta,
                           builder: (ctxV, value, _) {
                             if (!value) {
-                              _datasNotifier['volta']!.value = null;
+                              _viewcontroller.datasNotifier['volta']!.value =
+                                  null;
                               return const SizedBox();
                             }
                             return EscolherDataWidget(
-                              notifier: _datasNotifier['volta']!,
+                              notifier: _viewcontroller.datasNotifier['volta']!,
                               textoEscolherValor: 'Volta',
                             );
                           },
@@ -78,12 +77,30 @@ class BuscarPassagemView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(
-                        UsuarioRoutes.exibirPassagensBuscadas,
-                      );
+                  const SizedBox(height: 15),
+                  InputDropdown(
+                    opcoes: const ['AJU', 'GRU'],
+                    label: 'Origem',
+                    retornarValor: _viewcontroller.inputValores['origem'],
+                  ),
+                  InputDropdown(
+                    opcoes: const ['AJU', 'GRU'],
+                    label: 'Destino',
+                    retornarValor: _viewcontroller.inputValores['destino'],
+                  ),
+                  const SizedBox(height: 15),
+                  const BodyText1('Passageiros'),
+                  SpinBox(
+                    min: 1,
+                    max: 5,
+                    value: _viewcontroller.inputValores['passageiros'],
+                    onChanged: (double valor) {
+                      _viewcontroller.inputValores['passageiros'] = valor;
                     },
+                  ),
+                  const SizedBox(height: 30),
+                  ElevatedButton(
+                    onPressed: () => _viewcontroller.buscarPassagens(context),
                     style: ElevatedButton.styleFrom(
                       primary: Theme.of(context).primaryColor,
                     ),

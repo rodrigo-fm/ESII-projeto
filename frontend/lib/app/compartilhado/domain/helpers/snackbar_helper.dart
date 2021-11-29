@@ -2,6 +2,8 @@ import 'package:aterrissar/app/compartilhado/presentation/widgets/textos_widget.
 import 'package:flutter/material.dart';
 
 class SnackBarHelper {
+  static const duracaoSnackbar = 4;
+
   static void exibirErro(BuildContext ctx, String mensagem) {
     ScaffoldMessenger.of(ctx).showSnackBar(
       SnackBar(
@@ -10,7 +12,7 @@ class SnackBarHelper {
           color: Colors.white,
         ),
         backgroundColor: Colors.red,
-        duration: const Duration(seconds: 4),
+        duration: const Duration(seconds: SnackBarHelper.duracaoSnackbar),
       ),
     );
   }
@@ -20,7 +22,7 @@ class SnackBarHelper {
       SnackBar(
         content: BodyText1(mensagem),
         backgroundColor: Colors.green,
-        duration: const Duration(seconds: 4),
+        duration: const Duration(seconds: SnackBarHelper.duracaoSnackbar),
       ),
     );
   }

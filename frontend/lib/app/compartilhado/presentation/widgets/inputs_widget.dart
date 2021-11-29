@@ -3,6 +3,47 @@ import 'package:flutter/services.dart';
 
 import 'textos_widget.dart';
 
+class InputTexto extends StatelessWidget {
+  final TextEditingController controller;
+  final String? label;
+  final int? maxLength;
+  final TextInputType? keyboardType;
+  final int? maxLines;
+
+  const InputTexto({
+    Key? key,
+    required this.controller,
+    this.label,
+    this.maxLength,
+    this.keyboardType,
+    this.maxLines,
+  }) : super(key: key);
+
+  String? validarTexto(String? valor) {
+    if (valor!.isEmpty) {
+      return 'Insira um valor neste campo';
+    }
+    return null;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: TextFormField(
+        controller: controller,
+        validator: validarTexto,
+        maxLength: maxLength,
+        maxLines: maxLines,
+        keyboardType: keyboardType ?? TextInputType.text,
+        decoration: InputDecoration(
+          label: BodyText1(label ?? ''),
+        ),
+      ),
+    );
+  }
+}
+
 class InputEmail extends StatelessWidget {
   final TextEditingController controller;
   final String? label;
@@ -222,6 +263,47 @@ class InputNome extends StatelessWidget {
           label: BodyText1(label),
         ),
       ),
+    );
+  }
+}
+
+class InputDropdown extends StatelessWidget {
+  final List<String> opcoes;
+  final String label;
+  String retornarValor;
+  final ValueNotifier<String?> opcaoEscolhida = ValueNotifier<String?>(null);
+
+  InputDropdown({
+    Key? key,
+    required this.opcoes,
+    required this.retornarValor,
+    required this.label,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        BodyText1(label),
+        ValueListenableBuilder<String?>(
+          valueListenable: opcaoEscolhida,
+          builder: (ctxV, value, _) => DropdownButton<String>(
+            value: value ?? opcoes[0],
+            onChanged: (String? valor) {
+              opcaoEscolhida.value = valor;
+              retornarValor = valor!;
+            },
+            items: opcoes
+                .map((opcao) => DropdownMenuItem<String>(
+                      value: opcao,
+                      child: BodyText1(opcao),
+                    ))
+                .toList(),
+          ),
+        ),
+        const SizedBox(height: 10),
+      ],
     );
   }
 }

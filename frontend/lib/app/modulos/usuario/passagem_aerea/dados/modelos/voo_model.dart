@@ -23,7 +23,7 @@ class VooModel {
       'duracao': duracao,
       'origem': origem,
       'destino': destino,
-      'dataPartida': dataPartida.toIso8601String(),
+      'dataPartida': dataPartida.millisecondsSinceEpoch,
       'companhiaAerea': companhiaAerea,
     };
   }
@@ -35,7 +35,8 @@ class VooModel {
       duracao: map['duracao'],
       origem: map['origem'],
       destino: map['destino'],
-      dataPartida: DateTime.parse(map['dataPartida']),
+      dataPartida:
+          DateTime.fromMillisecondsSinceEpoch(map['dataPartida'], isUtc: true),
     );
   }
 

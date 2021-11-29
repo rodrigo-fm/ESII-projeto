@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "numeroAssento": 1,
+        "preco": 1000.00,
+        "classe": "Econômico",
+        "voo": {
+            "id": 1,
+            "destino": "GRU",
+            "origem": "AJU",
+            "dataPartida": 1641106800000,
+            "duracao": 120,
+            "companhiaAerea": "LATIM"
+        }
+    },
+    {
+        "id": 2,
+        "numeroAssento": 2,
+        "preco": 1100.00,
+        "classe": "Empresarial",
+        "voo": {
+            "id": 1,
+            "destino": "GRU",
+            "origem": "AJU",
+            "dataPartida": 1641106800000,
+            "duracao": 120,
+            "companhiaAerea": "LATIM"
+        }
+    },
+    {
+        "id": 3,
+        "numeroAssento": 3,
+        "preco": 1200.00,
+        "classe": "Primeira classe",
+        "voo": {
+            "id": 1,
+            "destino": "GRU",
+            "origem": "AJU",
+            "dataPartida": 1641106800000,
+            "duracao": 120,
+            "companhiaAerea": "GOLAÇO"
+        }
+    },
+    {
+        "id": 4,
+        "numeroAssento": 4,
+        "preco": 1300.00,
+        "classe": "Econômico",
+        "voo": {
+            "id": 2,
+            "destino": "AJU",
+            "origem": "GRU",
+            "dataPartida": 1641106800000,
+            "duracao": 120,
+            "companhiaAerea": "LATIM"
+        }
+    },
+    {
+        "id": 5,
+        "numeroAssento": 5,
+        "preco": 1400.00,
+        "classe": "Econômico",
+        "voo": {
+            "id": 2,
+            "destino": "AJU",
+            "origem": "GRU",
+            "dataPartida": 1641106800000,
+            "duracao": 120,
+            "companhiaAerea": "LATIM"
+        }
+    },
+    {
+        "id": 6,
+        "numeroAssento": 6,
+        "preco": 1500.00,
+        "classe": "Empresarial",
+        "voo": {
+            "id": 2,
+            "destino": "AJU",
+            "origem": "GRU",
+            "dataPartida": 1641106800000,
+            "duracao": 120,
+            "companhiaAerea": "GOLAÇO"
+        }
+    },
+    {
+        "id": 7,
+        "numeroAssento": 7,
+        "preco": 1600.00,
+        "classe": "Primeira classe",
+        "voo": {
+            "id": 2,
+            "destino": "AJU",
+            "origem": "GRU",
+            "dataPartida": 1641106800000,
+            "duracao": 120,
+            "companhiaAerea": "LATIM"
+        }
+    }
+
+]

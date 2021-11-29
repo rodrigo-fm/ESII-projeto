@@ -112,8 +112,7 @@ class AppWidget extends StatelessWidget {
               ExibirPassagensBuscadasView(),
           UsuarioRoutes.pedirSuporte: (ctx) => const PedirSuporteView(),
           UsuarioRoutes.menu: (ctx) => MenuConfiguracaoUsuarioView(),
-          UsuarioRoutes.solicitarReembolso: (ctx) =>
-              const SolicitarReembolsoView(),
+          UsuarioRoutes.solicitarReembolso: (ctx) => SolicitarReembolsoView(),
           UsuarioRoutes.visualizarCompras: (ctx) => VisualizarComprasView(),
           UsuarioRoutes.visualizarDadosConta: (ctx) =>
               const VisualizarDadosContaView(),

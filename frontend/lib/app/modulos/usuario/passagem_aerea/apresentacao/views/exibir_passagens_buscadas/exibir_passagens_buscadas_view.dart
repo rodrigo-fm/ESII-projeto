@@ -20,7 +20,6 @@ class ExibirPassagensBuscadasView extends StatelessWidget {
       ),
       body: FutureBuilder<dartz.Either<String, List<PassagemAereaModel>>>(
         future: passagemController.buscarPassagens(
-          '',
           PassagemAereaHerokuRemoteDatasource(),
         ),
         builder: (ctx, snapshot) {

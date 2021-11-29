@@ -49,15 +49,15 @@ class MenuConfiguracaoUsuarioView extends StatelessWidget {
                     );
                   },
                 ),
-                MenuConfiguracaoListTileWidget(
-                  icone: const Icon(Icons.cake),
-                  opcao: 'Pedir suporte',
-                  onTap: () {
-                    Navigator.of(context).pushNamed(
-                      UsuarioRoutes.pedirSuporte,
-                    );
-                  },
-                ),
+                // MenuConfiguracaoListTileWidget(
+                //   icone: const Icon(Icons.cake),
+                //   opcao: 'Pedir suporte',
+                //   onTap: () {
+                //     Navigator.of(context).pushNamed(
+                //       UsuarioRoutes.pedirSuporte,
+                //     );
+                //   },
+                // ),
                 MenuConfiguracaoListTileWidget(
                   icone: const Icon(Icons.cake),
                   opcao: 'Sair',

@@ -65,11 +65,6 @@ class PassagemAereaBuscaWidget extends StatelessWidget {
             child: Headline3('Valor: ${formatarPreco(passagem.preco)}'),
           ),
           ElevatedButton(
-            // onPressed: () {
-            //   Navigator.of(context).pushNamed(
-            //     UsuarioRoutes.inserirDadosPagamento,
-            //   );
-            // },
             onPressed: onPressed,
             style: ElevatedButton.styleFrom(
               primary: Theme.of(context).primaryColor,
