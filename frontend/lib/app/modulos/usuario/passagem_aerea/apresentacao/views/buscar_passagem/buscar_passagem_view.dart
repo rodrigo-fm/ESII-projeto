@@ -78,15 +78,20 @@ class BuscarPassagemView extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 15),
-                  InputDropdown(
-                    opcoes: const ['AJU', 'GRU'],
-                    label: 'Origem',
-                    retornarValor: _viewcontroller.inputValores['origem'],
-                  ),
-                  InputDropdown(
-                    opcoes: const ['AJU', 'GRU'],
-                    label: 'Destino',
-                    retornarValor: _viewcontroller.inputValores['destino'],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InputDropdown(
+                        opcoes: const ['AJU', 'GRU'],
+                        label: 'Origem',
+                        retornarValor: _viewcontroller.inputValores['origem'],
+                      ),
+                      InputDropdown(
+                        opcoes: const ['AJU', 'GRU'],
+                        label: 'Destino',
+                        retornarValor: _viewcontroller.inputValores['destino'],
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 15),
                   const BodyText1('Passageiros'),
