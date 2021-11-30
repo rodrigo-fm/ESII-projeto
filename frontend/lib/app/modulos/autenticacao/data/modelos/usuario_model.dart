@@ -27,7 +27,7 @@ class UsuarioModel {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'nome': nome,
+      'nomeCompleto': nome,
       'email': email,
       'tipoUsuario': tipoUsuario,
       'token': token.toMap(),
@@ -39,10 +39,9 @@ class UsuarioModel {
   factory UsuarioModel.fromMap(Map<String, dynamic> map) {
     return UsuarioModel(
       id: map['id'],
-      nome: map['nome'],
+      nome: map['nomeCompleto'],
       email: map['email'],
       tipoUsuario: map['tipoUsuario'],
-      // token: TokenModel.fromMap(map['token']),
       token: TokenModel(
         dataExpiracao: DateTime.now().add(const Duration(days: 3)),
         valor: 'rh3249r98efhasdhsaw9he9hejwiodjoaidowj21',

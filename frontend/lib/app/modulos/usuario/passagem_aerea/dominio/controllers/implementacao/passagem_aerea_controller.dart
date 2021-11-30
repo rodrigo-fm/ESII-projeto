@@ -16,7 +16,9 @@ class PassagemAereaController implements IPassagemAereaController {
       if (passagens.isEmpty) {
         return const Left('Nenhuma passagem aérea encontrada');
       }
-      return Right(passagens);
+      return Right(
+        passagens.where((passagem) => passagem.voo.origem == '').toList(),
+      );
     } catch (e) {
       return const Left('Erro ao buscar no servidor');
     }

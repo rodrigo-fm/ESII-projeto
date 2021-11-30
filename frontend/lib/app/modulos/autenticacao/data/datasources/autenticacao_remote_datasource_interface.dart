@@ -1,9 +1,7 @@
 import 'package:http/http.dart' as http;
 
-import '../modelos/usuario_model.dart';
-
 abstract class IAutenticacaoRemoteDatasource {
-  Future<UsuarioModel> login(
+  Future<http.Response> login(
     String email,
     String senha,
   );

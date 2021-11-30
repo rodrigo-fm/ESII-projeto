@@ -56,12 +56,19 @@ class AutenticacaoController implements IAutenticacaoController {
   ) async {
     final provider = Provider.of<AutenticacaoProvider>(ctx, listen: false);
     try {
-      final resultado = await remoteDatasource.login(email, senha);
-      await localDatasource.saveLocalData(resultado.toJson());
-      provider.usuario = resultado;
-      return Right(resultado);
+      final resultado = await remoteDatasource.login(
+        email.replaceAll(' ', ''),
+        senha,
+      );
+      if (resultado.statusCode == 200) {
+        final usuario = UsuarioModel.fromJson(resultado.body);
+        await localDatasource.saveLocalData(resultado.body);
+        provider.usuario = usuario;
+        return Right(usuario);
+      }
+      return const Left('Erro ao realizar login');
     } catch (e) {
-      return const Left('mensagem de erro');
+      return const Left('Erro ao realizar login');
     }
   }
 

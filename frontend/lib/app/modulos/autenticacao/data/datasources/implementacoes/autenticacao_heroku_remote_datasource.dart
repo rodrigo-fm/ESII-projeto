@@ -24,6 +24,7 @@ class AutenticacaoHerokuRemoteDatasource
       body: json.encode({
         'nomeCompleto': nome,
         'email': email,
+        'tipoUsuario': 'usuario',
         'senha': senha,
         'dadosPessoais': null,
       }),
@@ -31,34 +32,16 @@ class AutenticacaoHerokuRemoteDatasource
   }
 
   @override
-  Future<UsuarioModel> login(String email, String senha) async {
-    await Future.delayed(const Duration(seconds: 2));
-
-    return UsuarioModel(
-      id: 1,
-      nome: 'Adelisson',
-      // tipoUsuario: 'usuario',
-      tipoUsuario: 'atendente-suporte',
-      email: 'email@email.com',
-      token: TokenModel(
-        valor: 'ahuh2uh31uehudhas44316532165463dasdawi',
-        dataExpiracao: DateTime.now().add(const Duration(days: 3)),
-      ),
+  Future<http.Response> login(String email, String senha) async {
+    return await http.post(
+      Uri.parse('$apiURL/usuario/login'),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'email': email,
+        'senha': senha,
+      }),
     );
-
-    // final response = await http.post(
-    //   Uri.parse(apiURL),
-    //   headers: {},
-    //   body: json.encode({
-    //     'email': email,
-    //     'senha': senha,
-    //   }),
-    // );
-
-    // if (response.statusCode == 201) {
-    //   return UsuarioModel.fromJson(response.body);
-    // }
-
-    // // retornar mensagem de erro
   }
 }

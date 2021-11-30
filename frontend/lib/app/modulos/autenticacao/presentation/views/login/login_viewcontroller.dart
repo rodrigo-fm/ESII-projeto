@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../compartilhado/domain/helpers/snackbar_helper.dart';
+import '../../../../../compartilhado/domain/providers/autenticacao_provider.dart';
 import '../../../../../compartilhado/presentation/routes/suporte_routes.dart';
 import '../../../../../compartilhado/presentation/routes/usuario_routes.dart';
 import '../../../../../compartilhado/presentation/widgets/dialogs/loading_dialog_widget.dart';
@@ -61,10 +63,20 @@ class LoginViewController {
         if (value is FalhaLoginState) {
           SnackBarHelper.exibirErro(ctx, value.mensagem);
         } else if (value is SucessoLoginState) {
-          // Navigator.of(ctx).pushReplacementNamed(UsuarioRoutes.buscarPassagens);
-          Navigator.of(ctx).pushReplacementNamed(
-            SuporteRoutes.visualizarPedidos,
+          final autenticacaoProvider = Provider.of<AutenticacaoProvider>(
+            ctx,
+            listen: false,
           );
+          if (autenticacaoProvider.usuario.tipoUsuario == 'usuario') {
+            Navigator.of(ctx).pushReplacementNamed(
+              UsuarioRoutes.buscarPassagens,
+            );
+          } else if (autenticacaoProvider.usuario.tipoUsuario ==
+              'atendente-suporte') {
+            Navigator.of(ctx).pushReplacementNamed(
+              SuporteRoutes.visualizarPedidos,
+            );
+          }
         }
       }
     });
