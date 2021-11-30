@@ -10,13 +10,13 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import br.com.aterrissar.aterrissar.controller.dto.CartaoDeCreditoDTO;
 import br.com.aterrissar.aterrissar.modelo.CartaoDeCredito;
+import br.com.aterrissar.aterrissar.modelo.Usuario;
 import br.com.aterrissar.aterrissar.repository.CartaoDeCreditoRepository;
+import br.com.aterrissar.aterrissar.repository.UsuarioRepository;
 import br.com.aterrissar.aterrissar.service.exceptions.DatabaseException;
 import br.com.aterrissar.aterrissar.service.exceptions.ResourceNotFoundException;
 
@@ -26,16 +26,21 @@ public class CartaoDeCreditoService {
 
 	@Autowired
 	private CartaoDeCreditoRepository repository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@Transactional
-	public CartaoDeCreditoDTO insereNovosCartaoDeCredito(CartaoDeCreditoDTO cartaoDTO) {
+	public CartaoDeCreditoDTO insereNovosCartaoDeCredito(Long usuario_id, CartaoDeCreditoDTO cartaoDTO) {
 		CartaoDeCredito cartao = new CartaoDeCredito();
+		Optional<Usuario> obj = usuarioRepository.findById(usuario_id);
+		Usuario usuario = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		cartao.setId(cartaoDTO.getId());
 		cartao.setNomeTitular(cartaoDTO.getNomeTitular());
 		cartao.setNumeroCartao(cartaoDTO.getNumeroCartao());
 		cartao.setBandeira(cartaoDTO.getBandeira());
 		cartao.setValidade(cartaoDTO.getValidade());
-		cartao.setUsuario(cartaoDTO.getUsuario());
+		cartao.setUsuario(usuario);
 		repository.save(cartao);
 		return new CartaoDeCreditoDTO(cartao);
 	}

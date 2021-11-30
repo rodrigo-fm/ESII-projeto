@@ -6,18 +6,20 @@ import java.util.stream.Collectors;
 
 import br.com.aterrissar.aterrissar.modelo.PassagemAerea;
 import br.com.aterrissar.aterrissar.modelo.Voo;
+import br.com.aterrissar.aterrissar.service.VooService;
 
 public class PassagemAereaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
 	private String classe;
 	private Double preco;
 
 	private Voo voo = new Voo();
-	
-	public PassagemAereaDTO() {}
-	
+
+	public PassagemAereaDTO() {
+	}
+
 	public PassagemAereaDTO(PassagemAerea passagemAerea) {
 		super();
 		this.id = passagemAerea.getId();
@@ -58,16 +60,12 @@ public class PassagemAereaDTO implements Serializable {
 		this.voo = voo;
 	}
 
-//	public static List<CartaoDeCreditoDTO> converter(List<CartaoDeCredito> cartaoRetorno) {
-//		return cartaoRetorno.stream().map(CartaoDeCreditoDTO::new).collect(Collectors.toList());
-//	}
-	
 	public static List<PassagemAereaDTO> converter(List<PassagemAerea> passagemAerea) {
 		return passagemAerea.stream().map(PassagemAereaDTO::new).collect(Collectors.toList());
 	}
 
-	public void setVoo(long id, String origem, String destino, String dataPartida, 
-			Integer duracao, String companhiaAerea) {
+	public void setVoo(long id, String origem, String destino, String dataPartida, Integer duracao,
+			String companhiaAerea) {
 		Voo voo = new Voo();
 		voo.setId(id);
 		voo.setOrigem(origem);

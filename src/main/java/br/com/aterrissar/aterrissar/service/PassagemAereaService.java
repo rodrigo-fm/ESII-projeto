@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.aterrissar.aterrissar.controller.dto.CartaoDeCreditoDTO;
 import br.com.aterrissar.aterrissar.controller.dto.PassagemAereaDTO;
+import br.com.aterrissar.aterrissar.controller.dto.VooDTO;
 import br.com.aterrissar.aterrissar.modelo.CartaoDeCredito;
 import br.com.aterrissar.aterrissar.modelo.PassagemAerea;
 import br.com.aterrissar.aterrissar.repository.PassagemAereaRepository;
@@ -26,6 +27,9 @@ public class PassagemAereaService {
 
 	@Autowired
 	private PassagemAereaRepository repository;
+	
+	@Autowired
+	private VooService vooService;
 
 	@Transactional
 	public PassagemAereaDTO insereNovaPassagem(PassagemAereaDTO passagemAereaDTO) {
@@ -34,6 +38,8 @@ public class PassagemAereaService {
 		passagem.setVoo(passagemAereaDTO.getVoo());
 		passagem.setPreco(passagemAereaDTO.getPreco());
 		passagem.setClasse(passagemAereaDTO.getClasse());
+		VooDTO vooDTO = new VooDTO(passagem.getVoo());
+		vooService.insereUmNovoVoo(vooDTO);
 		repository.save(passagem);
 		return new PassagemAereaDTO(passagem);
 	}

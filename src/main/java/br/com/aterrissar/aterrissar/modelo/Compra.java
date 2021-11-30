@@ -27,17 +27,14 @@ public class Compra implements Serializable{
 	private Long id;
 	@NotBlank
 	private LocalDateTime dataCompra = LocalDateTime.now();
-	@NotBlank
-	private Integer quantidadeComprada;
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario") 
-	Usuario usuario = new Usuario();
+	private Usuario usuario = new Usuario();
 	
 	@OneToOne
 	@JoinColumn(name = "id_Passagem_aerea")
-	PassagemAerea passagemAerea = new PassagemAerea(); //possivel merda
-			
+	private PassagemAerea passagemAerea = new PassagemAerea(); 			
 	
 	public Compra() {
 	}
@@ -58,12 +55,12 @@ public class Compra implements Serializable{
 		this.dataCompra = dataCompra;
 	}
 
-	public Integer getQuantidadeComprada() {
-		return quantidadeComprada;
+	public PassagemAerea getPassagemAerea() {
+		return passagemAerea;
 	}
 
-	public void setQuantidadeComprada(Integer quantidadeComprada) {
-		this.quantidadeComprada = quantidadeComprada;
+	public void setPassagemAerea(PassagemAerea passagemAerea) {
+		this.passagemAerea = passagemAerea;
 	}
 
 	@Override
@@ -72,6 +69,14 @@ public class Compra implements Serializable{
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override

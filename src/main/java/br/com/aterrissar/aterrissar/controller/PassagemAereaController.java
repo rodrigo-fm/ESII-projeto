@@ -43,6 +43,7 @@ public class PassagemAereaController {
 	@PostMapping
 	public ResponseEntity<PassagemAereaDTO> inserirNovaPassagemAerea(@RequestBody ObjectNode json) {
 		PassagemAereaDTO passagemDTO = new PassagemAereaDTO();
+		passagemDTO.setId(json.get("id").longValue());
 		passagemDTO.setClasse(json.get("classe").textValue());
 		passagemDTO.setPreco(json.get("preco").doubleValue());
 		passagemDTO.setVoo(json.get("voo").get("id").longValue(), json.get("voo").get("origem").textValue(),

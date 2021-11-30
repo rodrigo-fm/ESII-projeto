@@ -16,7 +16,6 @@ public class CartaoDeCreditoDTO implements Serializable {
 	private String nomeTitular;
 	private String validade;
 	private String bandeira;
-
 	private Usuario usuario = new Usuario();
 	
 	public CartaoDeCreditoDTO() {}
@@ -28,7 +27,7 @@ public class CartaoDeCreditoDTO implements Serializable {
 		this.nomeTitular = cartao.getNomeTitular();
 		this.validade = cartao.getValidade();
 		this.bandeira = cartao.getBandeira();
-		this.usuario.setId(cartao.getUsuario().getId());
+		this.usuario = (cartao.getUsuario());
 	}
 
 	public Long getId() {

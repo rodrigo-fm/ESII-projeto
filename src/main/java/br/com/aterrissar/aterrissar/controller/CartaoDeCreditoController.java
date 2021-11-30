@@ -1,6 +1,5 @@
 package br.com.aterrissar.aterrissar.controller;
 
-import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.aterrissar.aterrissar.controller.dto.CartaoDeCreditoDTO;
 import br.com.aterrissar.aterrissar.service.CartaoDeCreditoService;
@@ -37,11 +35,10 @@ public class CartaoDeCreditoController {
 		return ResponseEntity.ok().body(cartaoDTO);
 	}
 	
-	@PostMapping
-	public ResponseEntity<CartaoDeCreditoDTO> inserirNovoCartaoDeCredito(@RequestBody CartaoDeCreditoDTO cartaoDTO){
-		cartaoDTO = service.insereNovosCartaoDeCredito(cartaoDTO);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cartaoDTO.getId()).toUri();
-		return ResponseEntity.created(uri).body(cartaoDTO);
+	@PostMapping(value = "/usuario/{id}")
+	public ResponseEntity<CartaoDeCreditoDTO> inserirNovoCartaoDeCredito(@PathVariable Long id, @RequestBody CartaoDeCreditoDTO cartaoDTO){
+		cartaoDTO = service.insereNovosCartaoDeCredito(id, cartaoDTO);
+		return ResponseEntity.ok().body(cartaoDTO);
 	}
 	
 	@DeleteMapping(value = "/{id}")

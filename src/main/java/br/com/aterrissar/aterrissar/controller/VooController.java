@@ -21,31 +21,32 @@ import br.com.aterrissar.aterrissar.service.VooService;
 @RestController
 @RequestMapping("voo")
 public class VooController {
-	
-	@Autowired	
-	VooService service;
-	
+
+	@Autowired
+	private VooService service;
+
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<VooDTO> buscaVooPorId(@PathVariable Long id){
+	public ResponseEntity<VooDTO> buscaVooPorId(@PathVariable Long id) {
 		VooDTO vooDTO = service.findById(id);
 		return ResponseEntity.ok().body(vooDTO);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<VooDTO> inserirNovoVoo(@RequestBody VooDTO voooDTO){
+	public ResponseEntity<VooDTO> inserirNovoVoo(@RequestBody VooDTO voooDTO) {
 		voooDTO = service.insereUmNovoVoo(voooDTO);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(voooDTO.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(voooDTO.getId())
+				.toUri();
 		return ResponseEntity.created(uri).body(voooDTO);
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> deletarConta(@PathVariable Long id){
+	public ResponseEntity<Void> deletarConta(@PathVariable Long id) {
 		service.deletarVoo(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<VooDTO> update(@PathVariable Long id, @RequestBody VooDTO vooDTO){
+	public ResponseEntity<VooDTO> update(@PathVariable Long id, @RequestBody VooDTO vooDTO) {
 		vooDTO = service.update(id, vooDTO);
 		return ResponseEntity.ok().body(vooDTO);
 	}
