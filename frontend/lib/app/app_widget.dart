@@ -103,7 +103,7 @@ class AppWidget extends StatelessWidget {
           GlobalRoutes.loading: (ctx) => const SplashScreenView(),
           UsuarioRoutes.buscarPassagens: (ctx) => BuscarPassagemView(),
           UsuarioRoutes.confirmarCompra: (ctx) => const ConfirmarCompraView(),
-          UsuarioRoutes.exibirNormasVoo: (ctx) => const ExibirNormasVooView(),
+          UsuarioRoutes.exibirNormasVoo: (ctx) => ExibirNormasVooView(),
           UsuarioRoutes.inserirDadosPagamento: (ctx) =>
               InserirDadosPagamentoView(),
           // UsuarioRoutes.inserirDadosPassaporte: (ctx) =>

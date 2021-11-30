@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinbox/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../compartilhado/presentation/routes/usuario_routes.dart';
 import '../../../../../../compartilhado/presentation/widgets/inputs_widget.dart';
 import '../../../../../../compartilhado/presentation/widgets/textos_widget.dart';
+import '../../../../compra/dominio/provider/compra_provider.dart';
 import 'buscar_passagem_viewcontroller.dart';
 import 'widgets/escolher_data_widget.dart';
 import 'widgets/ida_e_volta_widget.dart';
@@ -15,6 +17,8 @@ class BuscarPassagemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final compraProvider = Provider.of<CompraProvider>(context, listen: false);
+    compraProvider.passagemEscolhida = null;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Aterrissar'),

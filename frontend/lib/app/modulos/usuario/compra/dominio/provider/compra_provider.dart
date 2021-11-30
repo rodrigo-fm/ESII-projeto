@@ -1,13 +1,15 @@
 import 'package:aterrissar/app/modulos/autenticacao/data/modelos/dados_pagamento_model.dart';
 import 'package:aterrissar/app/modulos/autenticacao/data/modelos/dados_pessoais_model.dart';
+import 'package:aterrissar/app/modulos/usuario/passagem_aerea/dados/modelos/passagem_aerea_model.dart';
 // import 'package:aterrissar/app/modulos/autenticacao/data/modelos/passaporte_model.dart';
 import 'package:flutter/material.dart';
 
 class CompraProvider with ChangeNotifier {
   DadosPessoaisModel? dadosPessoais;
   DadosPagamentoModel? dadosPagamento;
+  PassagemAereaModel? passagemEscolhida;
   // PassaporteModel? passaporte;
-  List<int>? assentosEscolhidos;
+  // List<int>? assentosEscolhidos;
   Map<String, bool> salvarInformacao = {
     'dadosPessoais': false,
     'dadosPagamento': false,
@@ -15,9 +17,10 @@ class CompraProvider with ChangeNotifier {
   };
 
   void removerInformacoes() {
-    assentosEscolhidos = null;
+    // assentosEscolhidos = null;
     dadosPessoais = null;
     dadosPagamento = null;
+    passagemEscolhida = null;
     // passaporte = null;
   }
 

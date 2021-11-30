@@ -23,16 +23,12 @@ class ConfirmarCompraViewcontroller {
     BuildContext ctx,
   ) async* {
     final compraProvider = Provider.of<CompraProvider>(ctx, listen: false);
-    // final validator = CompraValidator();
-
-    // if (!validator(formKey)) {
-    //   return;
-    // }
 
     yield LoadingState();
 
     final compra = await compraController.comprarPassagem(
       CompraHerokuRemoteDatasource(),
+      compraProvider.passagemEscolhida,
       idUsuario,
     );
 

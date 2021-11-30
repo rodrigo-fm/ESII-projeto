@@ -20,7 +20,10 @@ class SnackBarHelper {
   static void exibirSucesso(BuildContext ctx, String mensagem) {
     ScaffoldMessenger.of(ctx).showSnackBar(
       SnackBar(
-        content: BodyText1(mensagem),
+        content: BodyText1(
+          mensagem,
+          color: Colors.black,
+        ),
         backgroundColor: Colors.green,
         duration: const Duration(seconds: SnackBarHelper.duracaoSnackbar),
       ),

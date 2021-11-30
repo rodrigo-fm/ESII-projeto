@@ -45,11 +45,15 @@ class CompraController implements ICompraController {
   @override
   Future<Either<String, bool>> comprarPassagem(
     ICompraRemoteDatasource datasource,
+    PassagemAereaModel? passagem,
     int idUsuario,
   ) async {
     try {
-      final resultado = await datasource.comprarPassagem(idUsuario);
-      return Right(resultado.statusCode == 201);
+      if (passagem != null) {
+        final resultado = await datasource.comprarPassagem(idUsuario, passagem);
+        return Right(resultado.statusCode == 201);
+      }
+      return const Left('Passagem aérea não especificada');
     } catch (e) {
       return const Left('Erro de conexão');
     }

@@ -41,8 +41,12 @@ class CredenciaisHerokuRemoteDatasource
         'Content-Type': 'application/json',
       },
       body: json.encode({
-        'cpf': dadosPagamento.cvv,
-        'rg': dadosPagamento.numero,
+        'id': idUsuario,
+        // 'bandeira': dadosPagamento.cvv,
+        'bandeira': 'Visa',
+        'nome_titular': dadosPagamento.titular,
+        'numero_cartao': dadosPagamento.numero,
+        'validade': dadosPagamento.vencimento,
       }),
     );
 
@@ -60,6 +64,7 @@ class CredenciaisHerokuRemoteDatasource
         'Content-Type': 'application/json',
       },
       body: json.encode({
+        'idUsuario': idUsuario,
         'cpf': dadosPessoais.cpf,
         'rg': dadosPessoais.rg,
       }),

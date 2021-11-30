@@ -1,9 +1,11 @@
 import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../compartilhado/presentation/routes/usuario_routes.dart';
 import '../../../../../../compartilhado/presentation/widgets/passagem_aerea/passagem_aerea_busca_widget.dart';
 import '../../../../../../compartilhado/presentation/widgets/textos_widget.dart';
+import '../../../../compra/dominio/provider/compra_provider.dart';
 import '../../../dados/datasource/implementacao/passagem_aerea_heroku_remote_datasource.dart';
 import '../../../dados/modelos/passagem_aerea_model.dart';
 import '../../../dominio/controllers/implementacao/passagem_aerea_controller.dart';
@@ -14,6 +16,7 @@ class ExibirPassagensBuscadasView extends StatelessWidget {
   final passagemController = PassagemAereaController();
   @override
   Widget build(BuildContext context) {
+    final compraProvider = Provider.of<CompraProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: const Headline3('Voos'),
@@ -43,6 +46,7 @@ class ExibirPassagensBuscadasView extends StatelessWidget {
                   passagens[index],
                   textoBotao: 'Comprar',
                   onPressed: () {
+                    compraProvider.passagemEscolhida = passagens[index];
                     Navigator.of(context).pushNamed(
                       UsuarioRoutes.inserirDadosPagamento,
                     );

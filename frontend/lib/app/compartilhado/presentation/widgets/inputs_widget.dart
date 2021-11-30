@@ -118,16 +118,21 @@ class InputNumero extends StatelessWidget {
   final TextEditingController controller;
   final String label;
   final int? maxLength;
+  final int? exactLength;
   const InputNumero({
     Key? key,
     required this.controller,
     required this.label,
     this.maxLength,
+    this.exactLength,
   }) : super(key: key);
 
   String? validarNumero(String? valor) {
     if (valor!.isEmpty) {
       return 'Insira um valor neste campo';
+    }
+    if (exactLength != null && valor.length != exactLength) {
+      return 'Insira todos os dígitos necessários';
     }
     return null;
   }
@@ -144,7 +149,7 @@ class InputNumero extends StatelessWidget {
             RegExp('[0-9]'),
           ),
         ],
-        maxLength: maxLength,
+        maxLength: exactLength ?? maxLength,
         validator: validarNumero,
         decoration: InputDecoration(
           label: BodyText1(label),

@@ -12,7 +12,6 @@ class InserirDadosPessoaisView extends StatelessWidget with ChangeNotifier {
   InserirDadosPessoaisView({Key? key}) : super(key: key);
   final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
   final _viewcontroller = InserirDadosPessoaisViewcontroller();
-  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +59,7 @@ class InserirDadosPessoaisView extends StatelessWidget with ChangeNotifier {
         title: const Headline3('Dados pessoais'),
       ),
       body: Form(
-        key: _formKey,
+        key: _viewcontroller.formKey,
         child: Center(
           child: ListView(
             padding: const EdgeInsets.all(16),
@@ -77,12 +76,12 @@ class InserirDadosPessoaisView extends StatelessWidget with ChangeNotifier {
               InputNumero(
                 controller: _viewcontroller.inputControllers['cpf']!,
                 label: 'CPF',
-                maxLength: 11,
+                exactLength: 11,
               ),
               InputNumero(
                 controller: _viewcontroller.inputControllers['rg']!,
                 label: 'RG',
-                maxLength: 7,
+                exactLength: 7,
               ),
               ValueListenableBuilder<bool>(
                 valueListenable: notifier,
@@ -102,16 +101,9 @@ class InserirDadosPessoaisView extends StatelessWidget with ChangeNotifier {
               ElevatedButton(
                 child: const BodyText1('Avançar'),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    compraProvider.adicionarDadosPessoais(
-                      _viewcontroller.inputControllers,
-                    );
-                  }
-                  // Navigator.of(context).pushNamed(
-                  //   UsuarioRoutes.escolherAssento,
-                  // );
-                  Navigator.of(context).pushNamed(
-                    UsuarioRoutes.confirmarCompra,
+                  _viewcontroller.inserirDados(
+                    context,
+                    authProvider.usuario.id,
                   );
                 },
               ),

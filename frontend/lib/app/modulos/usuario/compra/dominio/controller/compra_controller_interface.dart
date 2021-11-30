@@ -11,6 +11,7 @@ abstract class ICompraController {
 
   Future<Either<String, bool>> comprarPassagem(
     ICompraRemoteDatasource datasource,
+    PassagemAereaModel? passagem,
     int idUsuario,
   );
 }

@@ -12,7 +12,6 @@ import 'widgets/exibir_informacao_cartao_widget.dart';
 class InserirDadosPagamentoView extends StatelessWidget with ChangeNotifier {
   InserirDadosPagamentoView({Key? key}) : super(key: key);
   final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
-  final _formKey = GlobalKey<FormState>();
   final _viewcontroller = InserirDadosPagamentoViewcontroller();
 
   @override
@@ -56,7 +55,7 @@ class InserirDadosPagamentoView extends StatelessWidget with ChangeNotifier {
         title: const Headline3('Dados pagamento'),
       ),
       body: Form(
-        key: _formKey,
+        key: _viewcontroller.formKey,
         child: Center(
           child: ListView(
             padding: const EdgeInsets.all(16),
@@ -84,7 +83,8 @@ class InserirDadosPagamentoView extends StatelessWidget with ChangeNotifier {
                 builder: (ctxV, value, _) => CheckboxListTile(
                   value: notifier.value,
                   title: const BodyText1(
-                      'Salvar dados de pagamento na minha conta'),
+                    'Salvar dados de pagamento na minha conta',
+                  ),
                   controlAffinity: ListTileControlAffinity.leading,
                   onChanged: (valor) {
                     notifier.value = !notifier.value;
@@ -97,14 +97,10 @@ class InserirDadosPagamentoView extends StatelessWidget with ChangeNotifier {
               ElevatedButton(
                 child: const BodyText1('Avançar'),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    compraProvider.adicionarDadosPagamento(
-                      _viewcontroller.inputControllers,
-                    );
-                    Navigator.of(context).pushNamed(
-                      UsuarioRoutes.inserirDadosPessoais,
-                    );
-                  }
+                  _viewcontroller.inserirDados(
+                    context,
+                    authProvider.usuario.id,
+                  );
                 },
               ),
               ElevatedButton(
