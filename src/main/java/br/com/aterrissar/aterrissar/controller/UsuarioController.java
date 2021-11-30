@@ -22,7 +22,7 @@ import br.com.aterrissar.aterrissar.service.UsuarioService;
 @RequestMapping("/usuario")
 public class UsuarioController {
 
-	@Autowired	
+	@Autowired
 	UsuarioService service;
 	
 	@GetMapping(value = "/{id}")

@@ -8,6 +8,7 @@ public class LoginDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Long id;
+    private String nomeCompleto;
     private String tipoUsuario;
     private String email;
     private String senha;
@@ -17,6 +18,7 @@ public class LoginDTO implements Serializable {
     public LoginDTO(Usuario usuario) {
         this.id = usuario.getId();
         this.tipoUsuario = usuario.getTipoUsuario();
+        this.nomeCompleto = usuario.getNomeCompleto();
         this.email = usuario.getEmail();
         this.senha = usuario.getSenha();
     }
@@ -31,6 +33,7 @@ public class LoginDTO implements Serializable {
         return senha;
     }
     public String getTipoUsuario() { return tipoUsuario; }
+    public String getNomeCompleto() { return nomeCompleto; }
     public void setSenha(String senha) {
         this.senha = senha;
     }
