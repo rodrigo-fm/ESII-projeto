@@ -1,3 +1,4 @@
+import 'package:aterrissar/app/modulos/usuario/passagem_aerea/dados/modelos/filtros_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../compartilhado/domain/helpers/dialog_helper.dart';
@@ -17,7 +18,7 @@ class BuscarPassagemViewcontroller {
   };
   final Map<String, dynamic> inputValores = {
     'origem': 'AJU',
-    'destino': 'AJU',
+    'destino': 'GRU',
     'passageiros': 1.0,
   };
 
@@ -39,6 +40,12 @@ class BuscarPassagemViewcontroller {
 
     final resultado = await controller.buscarPassagens(
       PassagemAereaHerokuRemoteDatasource(),
+      FiltrosModel(
+        dataIda: datasNotifier['ida']!.value!,
+        dataVolta: datasNotifier['volta']!.value,
+        origem: inputValores['origem'],
+        destino: inputValores['destino'],
+      ),
     );
     yield resultado.fold(
       (erro) => FalhaState(erro),
@@ -59,8 +66,10 @@ class BuscarPassagemViewcontroller {
         } else if (value is SucessoState) {
           Navigator.of(ctx).pushNamed(
             UsuarioRoutes.exibirPassagensBuscadas,
+            arguments: {
+              'passagens': value.passagens,
+            },
           );
-          // passar as passagens como argumento para a próxima view
         }
       }
     });
