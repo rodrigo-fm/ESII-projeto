@@ -5,6 +5,7 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
+import br.com.aterrissar.aterrissar.controller.dto.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -53,6 +54,7 @@ public class UsuarioService {
 	public ContaDTO insereNovoUsuario(ContaDTO contaDTO) {
 		Usuario usuario = new Usuario();
 		usuario.setEmail(contaDTO.getEmail());
+		usuario.setTipoUsuario(contaDTO.getTipoUsuario());
 		usuario.setNomeCompleto(contaDTO.getNomeCompleto());
 		usuario.setSenha(contaDTO.getSenha());
 		usuario.setDadosPessoais(null);
@@ -89,6 +91,16 @@ public class UsuarioService {
 			return new ContaDTO(usuario);
 		} catch (EntityNotFoundException e) {
 			throw new ResourceNotFoundException("Id not found " + id);
+		}
+	}
+
+	@Transactional
+	public LoginDTO realizarLogin(String email, String senha) {
+		try {
+			Usuario usuario = usuarioRepository.findByEmailAndSenha(email, senha);
+			return new LoginDTO(usuario);
+		} catch(EntityNotFoundException e) {
+			throw new ResourceNotFoundException("Usuário não encontrado");
 		}
 	}
 
