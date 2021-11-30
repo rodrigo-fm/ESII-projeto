@@ -42,7 +42,11 @@ class UsuarioModel {
       nome: map['nome'],
       email: map['email'],
       tipoUsuario: map['tipoUsuario'],
-      token: TokenModel.fromMap(map['token']),
+      // token: TokenModel.fromMap(map['token']),
+      token: TokenModel(
+        dataExpiracao: DateTime.now().add(const Duration(days: 3)),
+        valor: 'rh3249r98efhasdhsaw9he9hejwiodjoaidowj21',
+      ),
       dadosPessoais: map['dadosPessoais'] != null
           ? DadosPessoaisModel.fromMap(map['dadosPessoais'])
           : null,
