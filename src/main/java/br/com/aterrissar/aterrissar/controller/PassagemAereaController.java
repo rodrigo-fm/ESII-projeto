@@ -29,7 +29,7 @@ public class PassagemAereaController {
 	PassagemAereaService service;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<PassagemAereaDTO> buscaCartaoPorId(@PathVariable Long id) {
+	public ResponseEntity<PassagemAereaDTO> buscaPassagemPorId(@PathVariable Long id) {
 		PassagemAereaDTO passagemDTO = service.findById(id);
 		return ResponseEntity.ok().body(passagemDTO);
 	}
