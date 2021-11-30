@@ -14,4 +14,10 @@ abstract class ICompraController {
     PassagemAereaModel? passagem,
     int idUsuario,
   );
+
+  Future<Either<String, bool>> solicitarReembolso(
+    ICompraRemoteDatasource datasource,
+    PassagemAereaModel passagem,
+    int idUsuario,
+  );
 }

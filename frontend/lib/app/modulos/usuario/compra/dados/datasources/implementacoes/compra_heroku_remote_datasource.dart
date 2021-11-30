@@ -41,4 +41,20 @@ class CompraHerokuRemoteDatasource implements ICompraRemoteDatasource {
       }),
     );
   }
+
+  @override
+  Future<http.Response> solicitarReembolso(
+    int idUsuario,
+    PassagemAereaModel passagem,
+  ) async {
+    return await http.post(
+      Uri.parse('$apiURL/rota/de/reembolso'),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: json.encode({
+        'idUsuario': idUsuario,
+      }),
+    );
+  }
 }

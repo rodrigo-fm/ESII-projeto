@@ -58,4 +58,21 @@ class CompraController implements ICompraController {
       return const Left('Erro de conexão');
     }
   }
+
+  @override
+  Future<Either<String, bool>> solicitarReembolso(
+    ICompraRemoteDatasource datasource,
+    PassagemAereaModel passagem,
+    int idUsuario,
+  ) async {
+    try {
+      final resultado = await datasource.solicitarReembolso(
+        idUsuario,
+        passagem,
+      );
+      return Right(resultado.statusCode == 201);
+    } catch (e) {
+      return const Left('Erro de conexão');
+    }
+  }
 }

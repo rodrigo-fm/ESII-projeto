@@ -7,4 +7,8 @@ abstract class ICompraRemoteDatasource {
     int idUsuario,
     PassagemAereaModel passagem,
   );
+  Future<http.Response> solicitarReembolso(
+    int idUsuario,
+    PassagemAereaModel passagem,
+  );
 }

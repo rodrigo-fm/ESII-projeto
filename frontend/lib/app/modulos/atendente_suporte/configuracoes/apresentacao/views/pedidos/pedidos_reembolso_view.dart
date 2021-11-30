@@ -2,6 +2,7 @@ import 'package:aterrissar/app/compartilhado/domain/providers/autenticacao_provi
 import 'package:aterrissar/app/compartilhado/presentation/routes/usuario_routes.dart';
 import 'package:aterrissar/app/compartilhado/presentation/widgets/pedidos_suporte.dart/pedidos_reembolso_widget.dart';
 import 'package:aterrissar/app/compartilhado/presentation/widgets/textos_widget.dart';
+import 'package:aterrissar/app/modulos/usuario/compra/dominio/controller/implementacoes/compra_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -76,5 +77,3 @@ class PedidosReembolsoView extends StatelessWidget {
     );
   }
 }
-
-class CompraController {}

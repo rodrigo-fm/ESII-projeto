@@ -54,6 +54,9 @@ class VisualizarComprasView extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pushNamed(
                             UsuarioRoutes.solicitarReembolso,
+                            arguments: {
+                              'passagem': passagens[i],
+                            },
                           );
                         },
                       );
