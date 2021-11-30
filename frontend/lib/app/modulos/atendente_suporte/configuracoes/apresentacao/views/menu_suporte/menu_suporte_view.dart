@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../../../compartilhado/domain/providers/autenticacao_provider.dart';
 import '../../../../../../compartilhado/presentation/widgets/menu_configuracao/menu_configuracao_list_tile_usuario.dart';
 import '../../../../../../compartilhado/presentation/widgets/menu_configuracao/menu_configuracao_list_tile_widget.dart';
 import '../../../../../../compartilhado/presentation/widgets/textos_widget.dart';
-
-import 'package:flutter/material.dart';
-
 import 'menu_suporte_viewcontroller.dart';
 
 //import 'menu_configuracao_usuario_viewcontroller.dart';
@@ -14,6 +15,10 @@ class MenuConfiguracaoSuporteView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final autenticacaoProvider = Provider.of<AutenticacaoProvider>(
+      context,
+      listen: false,
+    );
     return Scaffold(
       appBar: AppBar(title: const Headline3('Meu perfil')),
       body: Center(
@@ -24,9 +29,10 @@ class MenuConfiguracaoSuporteView extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Headline1('Olá, suporte'), //PEGAR NOME DO SUPORTE
-                const MenuConfiguracaoListTileUsuario(
-                    email: 'email@email.com'), //PEGAR EMAIL DO SUPORTE
+                Headline1('Olá, ${autenticacaoProvider.usuario.nome}'),
+                MenuConfiguracaoListTileUsuario(
+                  email: autenticacaoProvider.usuario.email,
+                ),
                 const SizedBox(height: 20),
                 const Divider(
                   thickness: 2,

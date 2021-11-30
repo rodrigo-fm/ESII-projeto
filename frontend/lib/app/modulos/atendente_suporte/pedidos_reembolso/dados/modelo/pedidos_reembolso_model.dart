@@ -1,37 +1,35 @@
 import 'dart:convert';
 
-abstract class PedidosReembolsoModel {
+class PedidoReembolsoModel {
   final int id;
-  final bool aprovado;
+  final bool? aprovado;
   final DateTime dataAbertura;
   final String motivoSolicitacao;
-  final String motivoRecusa;
-  //final CompraModel detalhesCompra;
+  final String? motivoRecusa;
 
-  PedidosReembolsoModel({
+  PedidoReembolsoModel({
     required this.id,
-    required this.aprovado,
+    this.aprovado,
     required this.dataAbertura,
-    required this.motivoRecusa,
+    this.motivoRecusa,
     required this.motivoSolicitacao,
-    //required this.detalhesCompra,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'aprovado': aprovado,
-      'dataAbertura': dataAbertura,
+      'dataAbertura': dataAbertura.toIso8601String(),
       'motivoSolicitacao': motivoSolicitacao,
       'motivoRecusa': motivoRecusa,
     };
   }
 
-  /*factory PedidoReembolsoModel.fromMap(Map<String, dynamic> map) {
+  factory PedidoReembolsoModel.fromMap(Map<String, dynamic> map) {
     return PedidoReembolsoModel(
       id: map['id'],
       aprovado: map['aprovado'],
-      dataAbertura: map['dataAbertura'],
+      dataAbertura: DateTime.parse(map['dataAbertura']),
       motivoSolicitacao: map['motivoSolicitacao'],
       motivoRecusa: map['motivoRecusa'],
     );
@@ -41,13 +39,4 @@ abstract class PedidosReembolsoModel {
 
   factory PedidoReembolsoModel.fromJson(String source) =>
       PedidoReembolsoModel.fromMap(json.decode(source));
-
-  static List<PedidoReembolsoModel> fromJsonList(String source) {
-    final data = json.decode(source) as List<dynamic>;
-    List<PedidoReembolsoModel> resultado = [];
-    for (var item in data) {
-      resultado.add(PedidoReembolsoModel.fromMap(item));
-    }
-    return resultado;
-  }*/
 }

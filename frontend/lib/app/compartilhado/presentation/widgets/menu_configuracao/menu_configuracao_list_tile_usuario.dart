@@ -19,7 +19,7 @@ class MenuConfiguracaoListTileUsuario extends StatelessWidget {
           Icons.account_circle,
           size: 70.0,
         ),
-        subtitle: BodyText2(email),
+        subtitle: BodyText1(email),
       ),
     );
   }

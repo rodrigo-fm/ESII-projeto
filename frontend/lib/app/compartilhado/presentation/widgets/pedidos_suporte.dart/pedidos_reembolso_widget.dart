@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:aterrissar/app/modulos/usuario/passagem_aerea/dados/modelos/passagem_aerea_model.dart';
-
+import '../../../../modulos/atendente_suporte/pedidos_reembolso/dados/modelo/pedidos_reembolso_model.dart';
 import '../../routes/usuario_routes.dart';
 import '../textos_widget.dart';
 
 class PedidosReembolsoWidget extends StatelessWidget {
-  //final PedidosSuporteModel passagem;
+  final PedidoReembolsoModel pedido;
   final Function() onPressed;
   final String textoBotao;
 
-  const PedidosReembolsoWidget(
-      //this.passagem, {
-      {
+  const PedidosReembolsoWidget({
+    required this.pedido,
     required this.onPressed,
     required this.textoBotao,
     Key? key,

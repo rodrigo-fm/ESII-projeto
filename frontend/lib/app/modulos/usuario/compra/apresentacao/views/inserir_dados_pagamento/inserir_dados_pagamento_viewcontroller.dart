@@ -18,7 +18,9 @@ class InserirDadosPagamentoViewcontroller {
   };
 
   Stream<GenericoState> inserirDadosState(
-      ICredenciaisController controller, int idUsuario) async* {
+    ICredenciaisController controller,
+    int idUsuario,
+  ) async* {
     if (!formKey.currentState!.validate()) {
       return;
     }

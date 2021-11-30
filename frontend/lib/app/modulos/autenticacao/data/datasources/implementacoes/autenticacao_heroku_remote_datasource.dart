@@ -37,7 +37,8 @@ class AutenticacaoHerokuRemoteDatasource
     return UsuarioModel(
       id: 1,
       nome: 'Adelisson',
-      tipoUsuario: 'usuario',
+      // tipoUsuario: 'usuario',
+      tipoUsuario: 'atendente-suporte',
       email: 'email@email.com',
       token: TokenModel(
         valor: 'ahuh2uh31uehudhas44316532165463dasdawi',

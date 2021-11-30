@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../atendente_suporte/pedidos_reembolso/apresentacao/views/pedidos_reembolso/pedidos_reembolso_view.dart';
 import '../../../../usuario/passagem_aerea/apresentacao/views/buscar_passagem/buscar_passagem_view.dart';
 import '../../../data/datasources/implementacoes/autenticacao_shared_preferences_local_datasource.dart';
 import '../../../data/modelos/usuario_model.dart';
@@ -31,7 +32,8 @@ class AutoLoginView extends StatelessWidget {
           if (snapshot.data!.tipoUsuario == 'usuario') {
             return BuscarPassagemView();
           } else if (snapshot.data!.tipoUsuario == 'atendente-suporte') {
-            return const Scaffold(body: Text('Tela do suporte'));
+            // return const Scaffold(body: Text('Tela do suporte'));
+            return PedidosReembolsoView();
           }
         }
         return const LoginView();

@@ -1,6 +1,7 @@
-import 'package:aterrissar/app/compartilhado/domain/helpers/snackbar_helper.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../compartilhado/domain/helpers/snackbar_helper.dart';
+import '../../../../../compartilhado/presentation/routes/suporte_routes.dart';
 import '../../../../../compartilhado/presentation/routes/usuario_routes.dart';
 import '../../../../../compartilhado/presentation/widgets/dialogs/loading_dialog_widget.dart';
 import '../../../data/datasources/implementacoes/autenticacao_heroku_remote_datasource.dart';
@@ -60,7 +61,10 @@ class LoginViewController {
         if (value is FalhaLoginState) {
           SnackBarHelper.exibirErro(ctx, value.mensagem);
         } else if (value is SucessoLoginState) {
-          Navigator.of(ctx).pushReplacementNamed(UsuarioRoutes.buscarPassagens);
+          // Navigator.of(ctx).pushReplacementNamed(UsuarioRoutes.buscarPassagens);
+          Navigator.of(ctx).pushReplacementNamed(
+            SuporteRoutes.visualizarPedidos,
+          );
         }
       }
     });
