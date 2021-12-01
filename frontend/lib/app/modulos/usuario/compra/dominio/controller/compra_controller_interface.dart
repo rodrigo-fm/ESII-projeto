@@ -4,10 +4,10 @@ import '../../../passagem_aerea/dados/modelos/passagem_aerea_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ICompraController {
-  Future<Either<String, List<PassagemAereaModel>>> historicoDeCompras(
-    int idUsuario,
-    ICompraRemoteDatasource datasource,
-  );
+  // Future<Either<String, List<PassagemAereaModel>>> historicoDeCompras(
+  //   int idUsuario,
+  //   ICompraRemoteDatasource datasource,
+  // );
 
   Future<Either<String, bool>> comprarPassagem(
     ICompraRemoteDatasource datasource,
@@ -18,6 +18,11 @@ abstract class ICompraController {
   Future<Either<String, bool>> solicitarReembolso(
     ICompraRemoteDatasource datasource,
     PassagemAereaModel passagem,
+    int idUsuario,
+  );
+
+  Future<Either<String, List<PassagemAereaModel>>> resgatarCompras(
+    ICompraRemoteDatasource datasource,
     int idUsuario,
   );
 }

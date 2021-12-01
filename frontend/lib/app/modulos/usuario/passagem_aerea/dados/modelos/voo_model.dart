@@ -35,8 +35,9 @@ class VooModel {
       duracao: map['duracao'],
       origem: map['origem'],
       destino: map['destino'],
-      dataPartida:
-          DateTime.fromMillisecondsSinceEpoch(map['dataPartida'], isUtc: true),
+      dataPartida: DateTime.fromMillisecondsSinceEpoch(
+          int.parse(map['dataPartida']),
+          isUtc: true),
     );
   }
 

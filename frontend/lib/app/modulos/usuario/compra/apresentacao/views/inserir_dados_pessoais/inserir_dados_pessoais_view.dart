@@ -112,7 +112,7 @@ class InserirDadosPessoaisView extends StatelessWidget with ChangeNotifier {
                         child: const BodyText1('Avançar'),
                         onPressed: () {
                           Navigator.of(context).pushNamed(
-                            UsuarioRoutes.confirmarCompra,
+                            UsuarioRoutes.exibirNormasVoo,
                           );
                         },
                       ),

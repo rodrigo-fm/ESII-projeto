@@ -20,9 +20,9 @@ class CredenciaisHerokuRemoteDatasource
   }
 
   @override
-  Future<http.Response> getDadosPessoais(int idDadosPessoais) async {
+  Future<http.Response> getDadosPessoais(int idUsuario) async {
     final response = await http.get(
-      Uri.parse('$apiURL/dados-pessoais/usuario/$idDadosPessoais'),
+      Uri.parse('$apiURL/dados-pessoais/usuario/$idUsuario'),
     );
 
     return response;

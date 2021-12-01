@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart' as dartz;
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -24,52 +24,32 @@ class VisualizarComprasView extends StatelessWidget {
       appBar: AppBar(
         title: const Headline3('Minhas compras'),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          const Headline1('Minhas compras'),
-          const SizedBox(height: 15),
-          FutureBuilder<dartz.Either<String, List<PassagemAereaModel>>>(
-            future: controller.historicoDeCompras(
-              autenticacaoProvider.usuario.id,
-              CompraHerokuRemoteDatasource(),
+      body: FutureBuilder<Either<String, List<PassagemAereaModel>>>(
+        future: controller.resgatarCompras(
+          CompraHerokuRemoteDatasource(),
+          autenticacaoProvider.usuario.id,
+        ),
+        builder: (ctx, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          return snapshot.data!.fold(
+            (mensagem) => Center(
+              child: Headline1(mensagem),
             ),
-            builder: (ctx, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
+            (passagens) => ListView.builder(
+              itemCount: passagens.length,
+              itemBuilder: (ctxL, i) {
+                return PassagemAereaBuscaWidget(
+                  passagens[i],
+                  textoBotao: 'Solicitar reembolso',
+                  onPressed: () {},
                 );
-              } else if (snapshot.hasData && snapshot.data != null) {
-                return snapshot.data!.fold(
-                  (mensagemErro) => Center(
-                    child: Headline2(mensagemErro),
-                  ),
-                  (passagens) => ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: 8,
-                    itemBuilder: (ctxL, i) {
-                      return PassagemAereaBuscaWidget(
-                        passagens[i],
-                        textoBotao: 'Solicitar reembolso',
-                        onPressed: () {
-                          Navigator.of(context).pushNamed(
-                            UsuarioRoutes.solicitarReembolso,
-                            arguments: {
-                              'passagem': passagens[i],
-                            },
-                          );
-                        },
-                      );
-                    },
-                  ),
-                );
-              }
-              return const Center(
-                child: Headline2('Erro ao resgatar passagens'),
-              );
-            },
-          ),
-        ],
+                // return Text(passagens[i].voo.companhiaAerea);
+              },
+            ),
+          );
+        },
       ),
     );
   }

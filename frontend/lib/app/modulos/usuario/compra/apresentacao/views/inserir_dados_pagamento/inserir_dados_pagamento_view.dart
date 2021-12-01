@@ -114,13 +114,14 @@ class InserirDadosPagamentoView extends StatelessWidget with ChangeNotifier {
                 return Column(
                   children: [
                     const Headline1('Etapa 1 de 3'),
+                    const Headline2('Dados de pagamento'),
                     const SizedBox(height: 10),
                     ExibirInformacaoCartaoWidget(dadosPagamento[i]),
                     const SizedBox(height: 10),
                     ElevatedButton(
                       child: const BodyText1('Avançar'),
                       onPressed: () {
-                        Navigator.of(ctx).pushNamed(
+                        Navigator.of(context).pushNamed(
                           UsuarioRoutes.inserirDadosPessoais,
                         );
                       },

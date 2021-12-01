@@ -25,6 +25,16 @@ class DadosPessoaisModel {
   }
 
   factory DadosPessoaisModel.fromMap(Map<String, dynamic> map) {
+    if (map.containsKey('dadosPessoais')) {
+      return DadosPessoaisModel(
+        id: map['dadosPessoais']['id'],
+        cpf: map['dadosPessoais']['cpf'],
+        rg: map['dadosPessoais']['rg'],
+        passaporte: map['passaporte'] != null
+            ? PassaporteModel.fromMap(map['passaporte'])
+            : null,
+      );
+    }
     return DadosPessoaisModel(
       id: map['id'],
       cpf: map['cpf'],

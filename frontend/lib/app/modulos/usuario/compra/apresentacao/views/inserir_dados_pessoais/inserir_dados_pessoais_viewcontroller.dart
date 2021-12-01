@@ -51,7 +51,7 @@ class InserirDadosPessoaisViewcontroller {
         ctx,
         sucessoNavigate: () {
           Navigator.of(ctx).pushNamed(
-            UsuarioRoutes.confirmarCompra,
+            UsuarioRoutes.exibirNormasVoo,
           );
         },
       ),

@@ -30,7 +30,7 @@ class PassagemAereaModel {
   factory PassagemAereaModel.fromMap(Map<String, dynamic> map) {
     return PassagemAereaModel(
       id: map['id'],
-      numeroAssento: map['numeroAssento'],
+      numeroAssento: map['numeroAssento'] ?? -1,
       classe: map['classe'],
       voo: VooModel.fromMap(map['voo']),
       preco: map['preco'],

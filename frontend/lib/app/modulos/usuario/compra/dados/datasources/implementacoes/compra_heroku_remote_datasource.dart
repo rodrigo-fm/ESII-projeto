@@ -12,8 +12,7 @@ class CompraHerokuRemoteDatasource implements ICompraRemoteDatasource {
   Future<http.Response> getHistoricoCompras(
     int idUsuario,
   ) async {
-    // TODO: implement getHistoricoCompras
-    throw UnimplementedError();
+    return await http.get(Uri.parse('$apiURL/compra/usuario/$idUsuario'));
   }
 
   @override

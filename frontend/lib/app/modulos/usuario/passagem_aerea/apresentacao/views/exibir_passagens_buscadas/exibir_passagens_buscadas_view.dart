@@ -41,42 +41,6 @@ class ExibirPassagensBuscadasView extends StatelessWidget {
           );
         },
       ),
-      // body: FutureBuilder<dartz.Either<String, List<PassagemAereaModel>>>(
-      //   future: passagemController.buscarPassagens(
-      //     PassagemAereaHerokuRemoteDatasource(),
-      //   ),
-      //   builder: (ctx, snapshot) {
-      //     if (snapshot.connectionState == ConnectionState.waiting) {
-      //       return const Center(
-      //         child: CircularProgressIndicator(),
-      //       );
-      //     }
-      //     return snapshot.data!.fold(
-      //       (mensagemErro) => Center(
-      //         child: Headline2(mensagemErro),
-      //       ),
-      //       (passagens) => ListView.builder(
-      //         itemCount: 1 + passagens.length,
-      //         itemBuilder: (ctx, i) {
-      //           if (i == 0) {
-      //             return const InformacoesBuscaPassagemWidget();
-      //           }
-      //           int index = i - 1;
-      //           return PassagemAereaBuscaWidget(
-      //             passagens[index],
-      //             textoBotao: 'Comprar',
-      //             onPressed: () {
-      //               compraProvider.passagemEscolhida = passagens[index];
-      //               Navigator.of(context).pushNamed(
-      //                 UsuarioRoutes.inserirDadosPagamento,
-      //               );
-      //             },
-      //           );
-      //         },
-      //       ),
-      //     );
-      //   },
-      // ),
     );
   }
 }
