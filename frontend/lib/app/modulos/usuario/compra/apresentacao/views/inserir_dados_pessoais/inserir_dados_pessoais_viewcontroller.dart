@@ -24,27 +24,27 @@ class InserirDadosPessoaisViewcontroller {
     yield LoadingState();
 
     // DESCOMENTAR ESTA LINHA PARA FINALIZAR A INTEGRAÇÃO
-    // final resultado = await controller.salvarDadosPessoais(
-    //   CredenciaisHerokuRemoteDatasource(),
-    //   DadosPessoaisModel(
-    //     cpf: inputControllers['cpf']!.text,
-    //     rg: inputControllers['rg']!.text,
-    //   ),
-    //   idUsuario,
-    // );
+    final resultado = await controller.salvarDadosPessoais(
+      CredenciaisHerokuRemoteDatasource(),
+      DadosPessoaisModel(
+        cpf: inputControllers['cpf']!.text,
+        rg: inputControllers['rg']!.text,
+      ),
+      idUsuario,
+    );
 
-    // yield resultado.fold(
-    //   (erro) => FalhaState(erro),
-    //   (booleano) {
-    //     if (booleano) {
-    //       return SucessoState('Dados pessoais registrados com sucesso.');
-    //     }
-    //     return FalhaState('Erro ao salvar dados pessoais');
-    //   },
-    // );
+    yield resultado.fold(
+      (erro) => FalhaState(erro),
+      (booleano) {
+        if (booleano) {
+          return SucessoState('Dados pessoais registrados com sucesso.');
+        }
+        return FalhaState('Erro ao salvar dados pessoais');
+      },
+    );
 
     // DELETAR ESTA LINHA PARA FINALIZAR INTEGRAÇÃO
-    yield SucessoState('Sucesso');
+    // yield SucessoState('Sucesso');
   }
 
   void inserirDados(BuildContext ctx, int idUsuario) {

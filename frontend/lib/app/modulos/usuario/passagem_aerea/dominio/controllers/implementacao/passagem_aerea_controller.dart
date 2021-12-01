@@ -19,13 +19,13 @@ class PassagemAereaController implements IPassagemAereaController {
         return const Left('Nenhuma passagem aérea encontrada');
       }
       // TODO: calcular a data de volta do voo
-      // TODO: ajustar jsons das passagens para uma data correta na hora
-      // da apresentação
       return Right(
         passagens.where(
           (passagem) {
+            if (filtros.dataVolta != null) {}
             return passagem.voo.origem == filtros.origem &&
-                passagem.voo.destino == filtros.destino;
+                passagem.voo.destino == filtros.destino &&
+                passagem.voo.dataPartida.day == filtros.dataIda.day;
           },
         ).toList(),
       );

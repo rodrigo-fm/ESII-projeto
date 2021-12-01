@@ -36,16 +36,14 @@ class CredenciaisHerokuRemoteDatasource
     DadosPagamentoModel dadosPagamento,
   ) async {
     final response = await http.post(
-      Uri.parse('$apiURL/cartao-de-credito'),
+      Uri.parse('$apiURL/cartao-de-credito/usuario/$idUsuario'),
       headers: {
         'Content-Type': 'application/json',
       },
       body: json.encode({
-        'id': idUsuario,
-        // 'bandeira': dadosPagamento.cvv,
         'bandeira': 'Visa',
-        'nome_titular': dadosPagamento.titular,
-        'numero_cartao': dadosPagamento.numero,
+        'nomeTitular': dadosPagamento.titular,
+        'numeroCartao': dadosPagamento.numero,
         'validade': dadosPagamento.vencimento,
       }),
     );
@@ -59,12 +57,11 @@ class CredenciaisHerokuRemoteDatasource
     DadosPessoaisModel dadosPessoais,
   ) async {
     final response = await http.post(
-      Uri.parse('$apiURL/dados-pessoais'),
+      Uri.parse('$apiURL/dados-pessoais/usuario/$idUsuario'),
       headers: {
         'Content-Type': 'application/json',
       },
       body: json.encode({
-        'idUsuario': idUsuario,
         'cpf': dadosPessoais.cpf,
         'rg': dadosPessoais.rg,
       }),

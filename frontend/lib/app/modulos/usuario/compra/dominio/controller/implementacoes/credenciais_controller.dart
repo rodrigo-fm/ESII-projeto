@@ -19,7 +19,7 @@ class CredenciaisController implements ICredenciaisController {
           dadosPagamento,
         );
 
-        if (resultado.statusCode == 201) {
+        if (resultado.statusCode == 200) {
           return const Right(true);
         }
         return const Left('Erro ao cadastrar cartão de crédito');
