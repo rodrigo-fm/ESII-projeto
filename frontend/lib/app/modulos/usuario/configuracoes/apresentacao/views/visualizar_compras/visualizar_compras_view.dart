@@ -43,7 +43,14 @@ class VisualizarComprasView extends StatelessWidget {
                 return PassagemAereaBuscaWidget(
                   passagens[i],
                   textoBotao: 'Solicitar reembolso',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      UsuarioRoutes.solicitarReembolso,
+                      arguments: {
+                        'passagem': passagens[i],
+                      },
+                    );
+                  },
                 );
                 // return Text(passagens[i].voo.companhiaAerea);
               },

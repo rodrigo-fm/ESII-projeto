@@ -23,17 +23,16 @@ class ExibirPassagensBuscadasView extends StatelessWidget {
         title: const Headline3('Voos'),
       ),
       body: ListView.builder(
-        itemCount: 1 + passagens.length,
+        itemCount: passagens.length,
         itemBuilder: (ctx, i) {
-          if (i == 0) {
-            return const InformacoesBuscaPassagemWidget();
-          }
-          int index = i - 1;
+          // if (i == 0) {
+          //   return const InformacoesBuscaPassagemWidget();
+          // }
           return PassagemAereaBuscaWidget(
-            passagens[index],
+            passagens[i],
             textoBotao: 'Comprar',
             onPressed: () {
-              compraProvider.passagemEscolhida = passagens[index];
+              compraProvider.passagemEscolhida = passagens[i];
               Navigator.of(context).pushNamed(
                 UsuarioRoutes.inserirDadosPagamento,
               );

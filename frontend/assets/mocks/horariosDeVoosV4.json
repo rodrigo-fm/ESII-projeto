@@ -8,7 +8,7 @@
             "id": 1,
             "destino": "GRU",
             "origem": "AJU",
-            "dataPartida": 1638402387534,
+            "dataPartida": "1638402387534",
             "duracao": 120,
             "companhiaAerea": "LATIM"
         }
@@ -22,7 +22,7 @@
             "id": 1,
             "destino": "GRU",
             "origem": "AJU",
-            "dataPartida": 1638402387534,
+            "dataPartida": "1638402387534",
             "duracao": 120,
             "companhiaAerea": "LATIM"
         }
@@ -36,7 +36,7 @@
             "id": 1,
             "destino": "GRU",
             "origem": "AJU",
-            "dataPartida": 1638402387534,
+            "dataPartida": "1638402387534",
             "duracao": 120,
             "companhiaAerea": "GOLAÇO"
         }
@@ -50,7 +50,7 @@
             "id": 2,
             "destino": "AJU",
             "origem": "GRU",
-            "dataPartida": 1638402387534,
+            "dataPartida": "1638402387534",
             "duracao": 120,
             "companhiaAerea": "LATIM"
         }
@@ -64,7 +64,7 @@
             "id": 2,
             "destino": "AJU",
             "origem": "GRU",
-            "dataPartida": 1638575187534,
+            "dataPartida": "1638575187534",
             "duracao": 120,
             "companhiaAerea": "LATIM"
         }
@@ -78,7 +78,7 @@
             "id": 2,
             "destino": "AJU",
             "origem": "GRU",
-            "dataPartida": 1638575187534,
+            "dataPartida": "1638575187534",
             "duracao": 120,
             "companhiaAerea": "GOLAÇO"
         }
@@ -92,7 +92,7 @@
             "id": 2,
             "destino": "AJU",
             "origem": "GRU",
-            "dataPartida": 1638575187534,
+            "dataPartida": "1638575187534",
             "duracao": 120,
             "companhiaAerea": "LATIM"
         }
