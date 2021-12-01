@@ -15,14 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.aterrissar.aterrissar.controller.dto.DadosPessoaisDTO;
+import br.com.aterrissar.aterrissar.controller.dto.UsuarioDTO;
+import br.com.aterrissar.aterrissar.controller.dto.UsuarioDadosPessoaisDTO;
 import br.com.aterrissar.aterrissar.service.DadosPessoaisService;
+import br.com.aterrissar.aterrissar.service.UsuarioService;
 
 @RestController
 @RequestMapping("dados-pessoais")
 public class DadosPessoaisController {
 
 	@Autowired	
-	DadosPessoaisService service;
+	private DadosPessoaisService service;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<DadosPessoaisDTO> buscaContaDeUsuarioPorId(@PathVariable Long id){
@@ -30,7 +36,13 @@ public class DadosPessoaisController {
 		return ResponseEntity.ok().body(dadosDTO);
 	}
 	
-	@PostMapping(value = "usuario/{id}")
+	@GetMapping(value = "/usuario/{id}")
+	public ResponseEntity<UsuarioDadosPessoaisDTO> buscaContaDadosDeUsuarioPorId(@PathVariable Long id){
+		UsuarioDadosPessoaisDTO usuarioDTO = usuarioService.findByIdUsuario(id);
+		return ResponseEntity.ok().body(usuarioDTO);
+	}
+	
+	@PostMapping(value = "/usuario/{id}")
 	public ResponseEntity<DadosPessoaisDTO> inserirNovaContaDeUsuario(@PathVariable Long id  ,@RequestBody DadosPessoaisDTO dadosDTO){
 		dadosDTO = service.insereNovosDadosPessoais(id,dadosDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dadosDTO.getId()).toUri();

@@ -48,6 +48,15 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 		this.tipoUsuario = tipoUsuario;
 	}
+	
+	public Usuario(Usuario usuario) {
+		super();
+		this.id = usuario.getId();
+		this.nomeCompleto = usuario.getNomeCompleto();
+		this.email = usuario.getEmail();
+		this.senha = usuario.getSenha();
+		this.tipoUsuario = usuario.getTipoUsuario();
+	}
 
 	public Long getId() {
 		return id;

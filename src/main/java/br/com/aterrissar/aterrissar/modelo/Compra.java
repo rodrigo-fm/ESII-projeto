@@ -16,17 +16,13 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "Compra")
 public class Compra implements Serializable{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
-	private LocalDateTime dataCompra = LocalDateTime.now();
+	private String dataCompra;
 
 	@ManyToOne
 	@JoinColumn(name = "id_usuario") 
@@ -39,6 +35,23 @@ public class Compra implements Serializable{
 	public Compra() {
 	}
 
+	public Compra(Compra compra) {
+		super();
+		this.id = compra.getId();
+		this.dataCompra = compra.getDataCompra();
+		this.usuario = compra.getUsuario();
+		this.passagemAerea = compra.getPassagemAerea();
+	}
+	
+//	public Compra(Long id, @NotBlank String dataCompra, Usuario usuario, PassagemAerea passagemAerea) {
+//		super();
+//		this.id = id;
+//		this.dataCompra = dataCompra;
+//		this.usuario = usuario;
+//		this.passagemAerea = passagemAerea;
+//	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -47,11 +60,11 @@ public class Compra implements Serializable{
 		this.id = id;
 	}
 
-	public LocalDateTime getDataCompra() {
+	public String getDataCompra() {
 		return dataCompra;
 	}
 
-	public void setDataCompra(LocalDateTime dataCompra) {
+	public void setDataCompra(String dataCompra) {
 		this.dataCompra = dataCompra;
 	}
 

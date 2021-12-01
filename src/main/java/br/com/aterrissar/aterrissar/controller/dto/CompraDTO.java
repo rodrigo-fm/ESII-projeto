@@ -15,7 +15,7 @@ public class CompraDTO implements Serializable {
 
 
 	private Long id;
-	private LocalDateTime dataCompra = LocalDateTime.now();
+	private String dataCompra ;
 	
 	private Usuario usuario = new Usuario();
 	
@@ -39,11 +39,11 @@ public class CompraDTO implements Serializable {
 		this.id = id;
 	}
 
-	public LocalDateTime getDataCompra() {
+	public String getDataCompra() {
 		return dataCompra;
 	}
 
-	public void setDataCompra(LocalDateTime dataCompra) {
+	public void setDataCompra(String dataCompra) {
 		this.dataCompra = dataCompra;
 	}
 
@@ -82,5 +82,17 @@ public class CompraDTO implements Serializable {
 	
 	public static List<CompraDTO> converter(List<Compra> compraRetorno) {
 		return compraRetorno.stream().map(CompraDTO::new).collect(Collectors.toList());
+	}
+
+	public void setUsuario(long id, String nomeCompleto, String textValue2, String textValue3, String textValue4) {
+		Usuario usuario = new Usuario();
+		usuario.setId(id);
+		usuario.setNomeCompleto(nomeCompleto);
+		usuario.setEmail(textValue4);
+	}
+
+	public void setPassagemAerea(long longValue, String textValue, double doubleValue) {
+		// TODO Auto-generated method stub
+		
 	}
 }

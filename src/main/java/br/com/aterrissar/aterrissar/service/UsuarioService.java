@@ -5,13 +5,14 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
-import br.com.aterrissar.aterrissar.controller.dto.LoginDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import br.com.aterrissar.aterrissar.controller.dto.ContaDTO;
+import br.com.aterrissar.aterrissar.controller.dto.LoginDTO;
+import br.com.aterrissar.aterrissar.controller.dto.UsuarioDadosPessoaisDTO;
 import br.com.aterrissar.aterrissar.modelo.Usuario;
 import br.com.aterrissar.aterrissar.repository.UsuarioRepository;
 import br.com.aterrissar.aterrissar.service.exceptions.DatabaseException;
@@ -67,6 +68,13 @@ public class UsuarioService {
 		Optional<Usuario> obj = usuarioRepository.findById(id);
 		Usuario usuario = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		return new ContaDTO(usuario);
+	}
+	
+	@Transactional
+	public UsuarioDadosPessoaisDTO findByIdUsuario(Long id) {
+		Optional<Usuario> obj = usuarioRepository.findById(id);
+		Usuario usuario = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+		return new UsuarioDadosPessoaisDTO(usuario);
 	}
 
 	public void deletarUsuario(Long id) {

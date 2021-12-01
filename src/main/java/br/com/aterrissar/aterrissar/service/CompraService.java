@@ -14,6 +14,7 @@ import br.com.aterrissar.aterrissar.controller.dto.CompraDTO;
 import br.com.aterrissar.aterrissar.controller.dto.PassagemAereaDTO;
 import br.com.aterrissar.aterrissar.modelo.Compra;
 import br.com.aterrissar.aterrissar.modelo.PassagemAerea;
+import br.com.aterrissar.aterrissar.modelo.Usuario;
 import br.com.aterrissar.aterrissar.repository.CompraRepository;
 import br.com.aterrissar.aterrissar.repository.PassagemAereaRepository;
 import br.com.aterrissar.aterrissar.repository.UsuarioRepository;
@@ -34,13 +35,16 @@ public class CompraService implements Serializable {
 	private PassagemAereaRepository passagemRepository;
 
 	@Transactional
-	public CompraDTO insereNovaCompra(Long usuario_id, CompraDTO compraDTO) {
+	public CompraDTO insereNovaCompra(Long id_usuario, Long id_passagem, CompraDTO compraDTO) {
 		Compra compra = new Compra();
-		Optional<PassagemAerea> obj = passagemRepository.findById(usuario_id);
-		PassagemAerea passagemAerea = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+		Optional<PassagemAerea> objPassagemAerea = passagemRepository.findById(id_passagem);
+		PassagemAerea passagemAerea = objPassagemAerea.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+		Optional<Usuario> objUsuario = usuarioRepository.findById(id_usuario);
+		Usuario usuario = objUsuario.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		compra.setId(compraDTO.getId());
 		compra.setDataCompra(compraDTO.getDataCompra());
 		compra.setPassagemAerea(passagemAerea);
+		compra.setUsuario(usuario);
 		repository.save(compra);
 		return new CompraDTO(compra);
 	}
