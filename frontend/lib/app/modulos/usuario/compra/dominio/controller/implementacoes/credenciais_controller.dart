@@ -1,5 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../../../compartilhado/domain/providers/autenticacao_provider.dart';
 import '../../../../../autenticacao/data/modelos/dados_pagamento_model.dart';
 import '../../../../../autenticacao/data/modelos/dados_pessoais_model.dart';
 import '../../../dados/datasources/credenciais_remote_datasource_interface.dart';
@@ -51,6 +54,45 @@ class CredenciaisController implements ICredenciaisController {
       return const Right(false);
     } catch (e) {
       return const Left('Erro de conexão');
+    }
+  }
+
+  @override
+  Future<Either<String, DadosPessoaisModel>> resgatarDadosPessoais(
+    ICredenciaisRemoteDatasource datasource,
+    int idUsuario,
+  ) async {
+    try {
+      final resultado = await datasource.getDadosPessoais(
+        idUsuario,
+      );
+
+      if (resultado.statusCode == 200) {
+        return Right(DadosPessoaisModel.fromJson(resultado.body));
+      }
+      return const Left('Erro ao resgatar dados pessoais');
+    } catch (e) {
+      return const Left('Erro de conexão');
+    }
+  }
+
+  @override
+  Future<Either<String, List<DadosPagamentoModel>>> resgatarDadosPagamento(
+    ICredenciaisRemoteDatasource datasource,
+    int idUsuario,
+  ) async {
+    try {
+      final resultado = await datasource.getDadosPagamento(idUsuario);
+      if (resultado.statusCode == 200) {
+        final cartoes = DadosPagamentoModel.fromJsonList(resultado.body);
+        if (cartoes.isEmpty) {
+          return const Left('Nenhum cartão de crédito encontrado');
+        }
+        return Right(cartoes);
+      }
+      return const Left('Erro ao resgatar cartões de crédito');
+    } catch (e) {
+      return const Left('Erro ao contatar servidor');
     }
   }
 }

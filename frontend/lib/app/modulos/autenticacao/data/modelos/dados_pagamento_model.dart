@@ -24,10 +24,10 @@ class DadosPagamentoModel {
 
   factory DadosPagamentoModel.fromMap(Map<String, dynamic> map) {
     return DadosPagamentoModel(
-      numero: map['numero'],
-      titular: map['titular'],
-      vencimento: map['vencimento'],
-      cvv: map['cvv'],
+      numero: map['numeroCartao'],
+      titular: map['nomeTitular'],
+      vencimento: map['validade'],
+      cvv: '',
     );
   }
 
@@ -35,4 +35,13 @@ class DadosPagamentoModel {
 
   factory DadosPagamentoModel.fromJson(String source) =>
       DadosPagamentoModel.fromMap(json.decode(source));
+
+  static List<DadosPagamentoModel> fromJsonList(String source) {
+    final data = json.decode(source) as List<dynamic>;
+    List<DadosPagamentoModel> resultado = [];
+    for (var item in data) {
+      resultado.add(DadosPagamentoModel.fromMap(item));
+    }
+    return resultado;
+  }
 }

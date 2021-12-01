@@ -26,7 +26,6 @@ class InserirDadosPagamentoViewcontroller {
     }
     yield LoadingState();
 
-    // DESCOMENTAR PARA FINALIZAR A INTEGRAÇÃO
     final resultado = await controller.salvarDadosPagamento(
       CredenciaisHerokuRemoteDatasource(),
       DadosPagamentoModel(

@@ -23,10 +23,10 @@ class InserirDadosPessoaisViewcontroller {
     }
     yield LoadingState();
 
-    // DESCOMENTAR ESTA LINHA PARA FINALIZAR A INTEGRAÇÃO
     final resultado = await controller.salvarDadosPessoais(
       CredenciaisHerokuRemoteDatasource(),
       DadosPessoaisModel(
+        id: -1,
         cpf: inputControllers['cpf']!.text,
         rg: inputControllers['rg']!.text,
       ),
@@ -42,9 +42,6 @@ class InserirDadosPessoaisViewcontroller {
         return FalhaState('Erro ao salvar dados pessoais');
       },
     );
-
-    // DELETAR ESTA LINHA PARA FINALIZAR INTEGRAÇÃO
-    // yield SucessoState('Sucesso');
   }
 
   void inserirDados(BuildContext ctx, int idUsuario) {

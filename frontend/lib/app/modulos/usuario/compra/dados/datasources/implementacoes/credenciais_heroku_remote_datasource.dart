@@ -11,13 +11,21 @@ class CredenciaisHerokuRemoteDatasource
   String apiURL = 'https://pacific-ravine-59367.herokuapp.com';
 
   @override
-  Future<http.Response> getDadosPagamento(int idUsuario) {
-    throw UnimplementedError();
+  Future<http.Response> getDadosPagamento(int idUsuario) async {
+    final response = await http.get(
+      Uri.parse('$apiURL/cartao-de-credito/usuario/$idUsuario'),
+    );
+
+    return response;
   }
 
   @override
-  Future<http.Response> getDadosPessoais(int idUsuario) {
-    throw UnimplementedError();
+  Future<http.Response> getDadosPessoais(int idDadosPessoais) async {
+    final response = await http.get(
+      Uri.parse('$apiURL/dados-pessoais/usuario/$idDadosPessoais'),
+    );
+
+    return response;
   }
 
   @override

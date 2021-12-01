@@ -11,8 +11,8 @@ class UsuarioModel {
   final String email;
   final String tipoUsuario;
   final TokenModel token;
-  final DadosPessoaisModel? dadosPessoais;
-  final DadosPagamentoModel? dadosPagamento;
+  DadosPessoaisModel? dadosPessoais;
+  DadosPagamentoModel? dadosPagamento;
 
   UsuarioModel({
     required this.id,

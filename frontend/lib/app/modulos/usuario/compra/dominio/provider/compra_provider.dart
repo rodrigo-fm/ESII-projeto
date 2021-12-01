@@ -35,14 +35,14 @@ class CompraProvider with ChangeNotifier {
     );
   }
 
-  void adicionarDadosPessoais(
-    Map<String, TextEditingController> inputValores,
-  ) {
-    dadosPessoais = DadosPessoaisModel(
-      cpf: inputValores['cpf']!.text,
-      rg: inputValores['rg']!.text,
-    );
-  }
+  // void adicionarDadosPessoais(
+  //   Map<String, TextEditingController> inputValores,
+  // ) {
+  //   dadosPessoais = DadosPessoaisModel(
+  //     cpf: inputValores['cpf']!.text,
+  //     rg: inputValores['rg']!.text,
+  //   );
+  // }
 
   // void adicionarPassaporte(Map<String, dynamic> inputValores) {
   //   passaporte = PassaporteModel(dataEmissao: '', numero: '');

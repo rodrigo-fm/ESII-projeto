@@ -15,4 +15,14 @@ abstract class ICredenciaisController {
     DadosPagamentoModel? dadosPagamento,
     int idUsuario,
   );
+
+  Future<Either<String, DadosPessoaisModel>> resgatarDadosPessoais(
+    ICredenciaisRemoteDatasource datasource,
+    int idUsuario,
+  );
+
+  Future<Either<String, List<DadosPagamentoModel>>> resgatarDadosPagamento(
+    ICredenciaisRemoteDatasource datasource,
+    int idUsuario,
+  );
 }
