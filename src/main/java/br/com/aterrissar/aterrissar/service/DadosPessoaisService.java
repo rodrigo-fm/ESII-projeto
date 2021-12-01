@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.aterrissar.aterrissar.controller.dto.DadosPessoaisDTO;
 import br.com.aterrissar.aterrissar.modelo.DadosPessoais;
+import br.com.aterrissar.aterrissar.modelo.Usuario;
 import br.com.aterrissar.aterrissar.repository.DadosPessoaisRepository;
+import br.com.aterrissar.aterrissar.repository.UsuarioRepository;
 import br.com.aterrissar.aterrissar.service.exceptions.DatabaseException;
 import br.com.aterrissar.aterrissar.service.exceptions.ResourceNotFoundException;
 
@@ -22,13 +24,19 @@ public class DadosPessoaisService {
 
 	@Autowired
 	private DadosPessoaisRepository repository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@Transactional
-	public DadosPessoaisDTO insereNovosDadosPessoais(DadosPessoaisDTO dadosDTO) {
+	public DadosPessoaisDTO insereNovosDadosPessoais(Long id,DadosPessoaisDTO dadosDTO) {
+		Optional<Usuario> obj = usuarioRepository.findById(id);
+		Usuario usuario = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		DadosPessoais dados = new DadosPessoais();
 		dados.setId(dadosDTO.getId());
 		dados.setRg(dadosDTO.getRg());
 		dados.setCpf(dadosDTO.getCpf());
+		usuario.setDadosPessoais(dados);
 		repository.save(dados);
 		return new DadosPessoaisDTO(dados);
 	}

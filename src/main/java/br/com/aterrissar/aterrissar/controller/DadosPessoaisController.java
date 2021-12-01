@@ -30,9 +30,9 @@ public class DadosPessoaisController {
 		return ResponseEntity.ok().body(dadosDTO);
 	}
 	
-	@PostMapping
-	public ResponseEntity<DadosPessoaisDTO> inserirNovaContaDeUsuario(@RequestBody DadosPessoaisDTO dadosDTO){
-		dadosDTO = service.insereNovosDadosPessoais(dadosDTO);
+	@PostMapping(value = "usuario/{id}")
+	public ResponseEntity<DadosPessoaisDTO> inserirNovaContaDeUsuario(@PathVariable Long id  ,@RequestBody DadosPessoaisDTO dadosDTO){
+		dadosDTO = service.insereNovosDadosPessoais(id,dadosDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dadosDTO.getId()).toUri();
 		return ResponseEntity.created(uri).body(dadosDTO);
 	}

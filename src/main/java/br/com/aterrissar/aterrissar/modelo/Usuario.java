@@ -47,7 +47,6 @@ public class Usuario implements Serializable {
 		this.email = email;
 		this.senha = senha;
 		this.tipoUsuario = tipoUsuario;
-		this.dadosPessoais = dadosPessoais;
 	}
 
 	public Long getId() {
@@ -82,20 +81,20 @@ public class Usuario implements Serializable {
 		this.senha = senha;
 	}
 
-	public DadosPessoais getDadosPessoais() {
-		return dadosPessoais;
-	}
-
-	public void setDadosPessoais(DadosPessoais dadosPessoais) {
-		this.dadosPessoais = dadosPessoais;
-	}
-
 	public String getTipoUsuario() {
 		return tipoUsuario;
 	}
 
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+	
+	public DadosPessoais getDadosPessoais() {
+		return dadosPessoais;
+	}
+
+	public void setDadosPessoais(DadosPessoais dadosPessoais) {
+		this.dadosPessoais = dadosPessoais;
 	}
 
 	@Override
