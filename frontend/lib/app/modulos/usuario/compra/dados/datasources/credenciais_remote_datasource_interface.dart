@@ -15,5 +15,5 @@ abstract class ICredenciaisRemoteDatasource {
     DadosPagamentoModel dadosPagamento,
   );
   Future<http.Response> removerDadosPessoais(int idUsuario);
-  Future<http.Response> removerDadosPagamento(int idUsuario);
+  Future<http.Response> removerDadosPagamento(int idCartaoDeCredito);
 }

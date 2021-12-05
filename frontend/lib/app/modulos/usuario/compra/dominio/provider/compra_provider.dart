@@ -28,6 +28,7 @@ class CompraProvider with ChangeNotifier {
     Map<String, TextEditingController> inputValores,
   ) {
     dadosPagamento = DadosPagamentoModel(
+      id: 0,
       numero: inputValores['numeroCartao']!.text,
       titular: inputValores['nomeTitular']!.text,
       vencimento: inputValores['vencimento']!.text,

@@ -25,4 +25,9 @@ abstract class ICredenciaisController {
     ICredenciaisRemoteDatasource datasource,
     int idUsuario,
   );
+
+  Future<Either<String, bool>> removerDadosPagamento(
+    ICredenciaisRemoteDatasource datasource,
+    int idCartao,
+  );
 }

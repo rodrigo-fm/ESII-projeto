@@ -29,8 +29,10 @@ class CredenciaisHerokuRemoteDatasource
   }
 
   @override
-  Future<http.Response> removerDadosPagamento(int idUsuario) {
-    throw UnimplementedError();
+  Future<http.Response> removerDadosPagamento(int idCartaoDeCredito) async {
+    return await http.delete(
+      Uri.parse('$apiURL/cartao-de-credito/$idCartaoDeCredito'),
+    );
   }
 
   @override

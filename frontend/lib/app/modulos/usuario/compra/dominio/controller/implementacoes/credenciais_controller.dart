@@ -95,4 +95,21 @@ class CredenciaisController implements ICredenciaisController {
       return const Left('Erro ao contatar servidor');
     }
   }
+
+  @override
+  Future<Either<String, bool>> removerDadosPagamento(
+    ICredenciaisRemoteDatasource datasource,
+    int idCartao,
+  ) async {
+    try {
+      final resultado = await datasource.removerDadosPagamento(idCartao);
+
+      if (resultado.statusCode == 204) {
+        return const Right(true);
+      }
+      return const Left('Erro ao remover dados do cartão');
+    } catch (e) {
+      return const Left('Erro de conexão');
+    }
+  }
 }

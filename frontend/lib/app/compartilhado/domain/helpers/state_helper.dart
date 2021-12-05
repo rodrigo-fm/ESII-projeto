@@ -24,4 +24,10 @@ class StateHelper {
       }
     }
   }
+
+  // static Stream<GenericoState> usecase({
+  //   required Function() usecase,
+  // }) async* {
+  //   yield LoadingState();
+  // }
 }

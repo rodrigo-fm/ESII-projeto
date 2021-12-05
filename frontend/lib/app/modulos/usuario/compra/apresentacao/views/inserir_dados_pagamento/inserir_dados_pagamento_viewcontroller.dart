@@ -29,6 +29,7 @@ class InserirDadosPagamentoViewcontroller {
     final resultado = await controller.salvarDadosPagamento(
       CredenciaisHerokuRemoteDatasource(),
       DadosPagamentoModel(
+        id: 0,
         numero: inputControllers['numeroCartao']!.text,
         titular: inputControllers['nomeTitular']!.text,
         vencimento: inputControllers['vencimento']!.text,

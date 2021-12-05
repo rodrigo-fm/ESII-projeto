@@ -1,12 +1,14 @@
 import 'dart:convert';
 
 class DadosPagamentoModel {
+  final int id;
   final String numero;
   final String titular;
   final String vencimento;
   final String cvv;
 
   DadosPagamentoModel({
+    required this.id,
     required this.numero,
     required this.titular,
     required this.vencimento,
@@ -15,6 +17,7 @@ class DadosPagamentoModel {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'numero': numero,
       'titular': titular,
       'vencimento': vencimento,
@@ -28,6 +31,7 @@ class DadosPagamentoModel {
 
   factory DadosPagamentoModel.fromMap(Map<String, dynamic> map) {
     return DadosPagamentoModel(
+      id: map['id'],
       numero: map['numeroCartao'],
       titular: map['nomeTitular'],
       vencimento: map['validade'],

@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart' as dartz;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,10 +8,20 @@ import '../../../../../autenticacao/data/modelos/dados_pagamento_model.dart';
 import '../../../../../autenticacao/data/modelos/dados_pessoais_model.dart';
 import '../../../../compra/dados/datasources/implementacoes/credenciais_heroku_remote_datasource.dart';
 import '../../../../compra/dominio/controller/implementacoes/credenciais_controller.dart';
+import 'visualizar_dados_conta_viewcontroller.dart';
 
-class VisualizarDadosContaView extends StatelessWidget {
-  VisualizarDadosContaView({Key? key}) : super(key: key);
-  final controller = CredenciaisController();
+class VisualizarDadosContaView extends StatefulWidget {
+  const VisualizarDadosContaView({Key? key}) : super(key: key);
+
+  @override
+  State<VisualizarDadosContaView> createState() =>
+      _VisualizarDadosContaViewState();
+}
+
+class _VisualizarDadosContaViewState extends State<VisualizarDadosContaView> {
+  final _controller = CredenciaisController();
+
+  final _viewcontroller = VisualizarDadosContaViewcontroller();
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +36,8 @@ class VisualizarDadosContaView extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          FutureBuilder<Either<String, DadosPessoaisModel>>(
-            future: controller.resgatarDadosPessoais(
+          FutureBuilder<dartz.Either<String, DadosPessoaisModel>>(
+            future: _controller.resgatarDadosPessoais(
               CredenciaisHerokuRemoteDatasource(),
               autenticacaoProvider.usuario.id,
             ),
@@ -61,8 +71,8 @@ class VisualizarDadosContaView extends StatelessWidget {
               );
             },
           ),
-          FutureBuilder<Either<String, List<DadosPagamentoModel>>>(
-            future: controller.resgatarDadosPagamento(
+          FutureBuilder<dartz.Either<String, List<DadosPagamentoModel>>>(
+            future: _controller.resgatarDadosPagamento(
               CredenciaisHerokuRemoteDatasource(),
               autenticacaoProvider.usuario.id,
             ),
@@ -91,7 +101,13 @@ class VisualizarDadosContaView extends StatelessWidget {
                               Icons.delete,
                               color: Colors.red,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              _viewcontroller.removerDados(
+                                context,
+                                cartao.id,
+                                () => setState(() {}),
+                              );
+                            },
                           ),
                         );
                       },
