@@ -14,7 +14,7 @@ class CompraController implements ICompraController {
     try {
       if (passagem != null) {
         final resultado = await datasource.comprarPassagem(idUsuario, passagem);
-        return Right(resultado.statusCode == 201);
+        return Right(resultado.statusCode == 200);
       }
       return const Left('Passagem aérea não especificada');
     } catch (e) {
