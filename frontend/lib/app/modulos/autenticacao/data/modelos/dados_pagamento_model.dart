@@ -22,6 +22,10 @@ class DadosPagamentoModel {
     };
   }
 
+  String get numeroCensurado {
+    return numero.substring(12);
+  }
+
   factory DadosPagamentoModel.fromMap(Map<String, dynamic> map) {
     return DadosPagamentoModel(
       numero: map['numeroCartao'],
