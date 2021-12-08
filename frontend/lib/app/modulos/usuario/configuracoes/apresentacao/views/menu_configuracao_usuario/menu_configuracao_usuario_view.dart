@@ -32,8 +32,8 @@ class MenuConfiguracaoUsuarioView extends StatelessWidget {
                   color: Color(0xffc0c0c0),
                 ),
                 MenuConfiguracaoListTileWidget(
-                  icone: const Icon(Icons.cake),
-                  opcao: 'Dados da conta',
+                  icone: const Icon(Icons.person),
+                  opcao: 'Dados da Conta',
                   onTap: () {
                     Navigator.of(context).pushNamed(
                       UsuarioRoutes.visualizarDadosConta,
@@ -41,8 +41,8 @@ class MenuConfiguracaoUsuarioView extends StatelessWidget {
                   },
                 ),
                 MenuConfiguracaoListTileWidget(
-                  icone: const Icon(Icons.cake),
-                  opcao: 'Histórico de compras',
+                  icone: const Icon(Icons.shopping_bag),
+                  opcao: 'Histórico de Compras',
                   onTap: () {
                     Navigator.of(context).pushNamed(
                       UsuarioRoutes.visualizarCompras,
@@ -59,7 +59,7 @@ class MenuConfiguracaoUsuarioView extends StatelessWidget {
                 //   },
                 // ),
                 MenuConfiguracaoListTileWidget(
-                  icone: const Icon(Icons.cake),
+                  icone: const Icon(Icons.logout_outlined),
                   opcao: 'Sair',
                   onTap: () async {
                     await viewcontroller.logout(context);
