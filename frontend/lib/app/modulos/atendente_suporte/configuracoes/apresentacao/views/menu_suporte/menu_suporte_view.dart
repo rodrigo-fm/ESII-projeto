@@ -39,7 +39,7 @@ class MenuConfiguracaoSuporteView extends StatelessWidget {
                   color: Color(0xffc0c0c0),
                 ),
                 MenuConfiguracaoListTileWidget(
-                  icone: const Icon(Icons.cake),
+                  icone: const Icon(Icons.logout),
                   opcao: 'Sair',
                   onTap: () async {
                     await viewcontroller.logout(context);
